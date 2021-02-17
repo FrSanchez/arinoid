@@ -23,7 +23,7 @@ class Arena : public cocos2d::Node
     
     Arena();
     void makeBackground(int tile);
-    void drawTile(cocos2d::Rect, int, int);
+    cocos2d::Sprite* drawTile(cocos2d::Rect, int, int);
     
 public:
     virtual bool init();

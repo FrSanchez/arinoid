@@ -16,8 +16,16 @@ bool Paddle::init()
     }
     
     initWithFile("arinoid_master.png", Rect(260, 143, 57, 11));
-    setPosition(Vec2(-getContentSize().width / 2, 0));
     setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+    
+    auto pb = PhysicsBody::createBox(Size(57,11));
+    pb->setDynamic(false);
+    pb->setGravityEnable(false);
+    pb->setCategoryBitmask(0x04);    // 0001
+    pb->setContactTestBitmask(0xff); // 1000
+    pb->setCollisionBitmask(0xff);   // 0001
+
+    addComponent(pb);
 
     // Make sprite1 touchable
     auto listener1 = EventListenerTouchOneByOne::create();
@@ -32,7 +40,6 @@ bool Paddle::init()
         
         if (rect.containsPoint(locationInNode))
         {
-            log("sprite began... x = %f, y = %f", locationInNode.x, locationInNode.y);
 //            target->setOpacity(180);
             return true;
         }
@@ -42,13 +49,14 @@ bool Paddle::init()
     listener1->onTouchMoved = [](Touch* touch, Event* event){
         auto target = static_cast<Sprite*>(event->getCurrentTarget());
         auto newPos = target->getPosition() + touch->getDelta();
-        target->setPosition(newPos.x, target->getPosition().y);
-        log("paddle location: %f, %f", target->getPosition().x, target->getPosition().y);
+        if (newPos.x > 31 && newPos.x < 372) {
+            target->setPosition(newPos.x, target->getPosition().y);
+        }
     };
     
     listener1->onTouchEnded = [=](Touch* touch, Event* event){
         auto target = static_cast<Sprite*>(event->getCurrentTarget());
-        log("sprite onTouchesEnded.. ");
+
 //        target->setOpacity(255);
     };
     

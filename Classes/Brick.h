@@ -14,10 +14,9 @@ class Brick : public cocos2d::Sprite
 {
     
 public:
-    virtual bool init(cocos2d::Vec2 pos, int color);
-    static Brick* create(cocos2d::Vec2 pos, int color);
-    
-    static cocos2d::Rect* tiles;
+    virtual bool init(cocos2d::Vec2 pos, cocos2d::Rect rect);
+    static Brick* create(cocos2d::Vec2 pos, cocos2d::Rect rect);
+
 };
 
 
