@@ -15,18 +15,17 @@ bool Paddle::init()
         return false;
     }
     
-    initWithFile("arinoid_master.png", Rect(260, 143, 57, 11));
+    initWithSpriteFrameName("paddle");
     setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     
-    auto pb = PhysicsBody::createBox(Size(57,11));
+    auto pb = PhysicsBody::createBox(getContentSize(), PhysicsMaterial(0.1f, 1.05, 0.0f) );
     pb->setDynamic(false);
     pb->setGravityEnable(false);
-    pb->setCategoryBitmask(0x04);    // 0001
-    pb->setContactTestBitmask(0xff); // 1000
-    pb->setCollisionBitmask(0xff);   // 0001
-
+    pb->setCategoryBitmask(0x04);    // 0100
+    pb->setContactTestBitmask(0x01); // 0001
+    pb->setCollisionBitmask(0x01);   // 0110
     addComponent(pb);
-
+    
     // Make sprite1 touchable
     auto listener1 = EventListenerTouchOneByOne::create();
     listener1->setSwallowTouches(true);
@@ -62,4 +61,28 @@ bool Paddle::init()
     
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, this);
     return true;
+}
+
+void Paddle::die(std::function<void(void)> callback)
+{
+    Vector<SpriteFrame*> animFrames(3);
+    auto frameCache = SpriteFrameCache::getInstance();
+    animFrames.pushBack( frameCache->getSpriteFrameByName("paddle3"));
+    animFrames.pushBack( frameCache->getSpriteFrameByName("paddle2"));
+    animFrames.pushBack( frameCache->getSpriteFrameByName("paddle1"));
+    auto animation = Animation::createWithSpriteFrames(animFrames, 0.2f);
+    auto seq = Sequence::create(Animate::create(animation), CallFunc::create([&, callback](){
+        this->setVisible(false);
+        if (callback != nullptr)
+        {
+            callback();
+        }
+    }), nullptr);
+    runAction(seq);
+}
+
+void Paddle::start()
+{
+    setVisible(true);
+    this->setSpriteFrame("paddle");
 }

@@ -11,16 +11,18 @@ USING_NS_CC;
 
 bool Ball::init()
 {
-    initWithFile("arinoid_master.png", Rect(428, 300, 11, 11));
-    setPosition(Vec2(-getContentSize().width / 2, 0));
+    initWithSpriteFrameName("ball");
     setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+    setTag(BALL_TAG);
     
-    auto pb = PhysicsBody::createBox(Size(11,11));
+    auto pb = PhysicsBody::createCircle(5.5, PhysicsMaterial(0.1f, 1, 0.0f));
     pb->setGravityEnable(false);
     pb->setDynamic(true);
-    pb->setCategoryBitmask(0x08);
-    pb->setContactTestBitmask(0xff);
-    pb->setCollisionBitmask(0xff);   
+    pb->setCategoryBitmask(0x01);
+    pb->setContactTestBitmask(0x0f);
+    pb->setCollisionBitmask(0x0f);
 
     addComponent(pb);
+    
+    return true;
 }

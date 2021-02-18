@@ -1,0 +1,6 @@
+bin/
+build/
+engine/
+lib/
+arinoid.build/
+.DS_Store

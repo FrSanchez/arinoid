@@ -14,76 +14,66 @@ numXTiles(12),
 numYTiles(14),
 tileSize(31)
 {
-    borders = new (std::nothrow) Rect[] {
-//# left border - 0, right border - 1,
-//    # special left border - 2, special right border - 3
-        {129, 257, 31, 31},
-        {193, 257, 31, 31},
-        {129, 225, 31, 31},
-        {193, 225, 31, 31},
-//# plain border - 4, special border - 5, upper left - 6, upper right - 7
-        {449,  36, 31, 10},
-        {129, 290, 31, 13},
-        {129, 193, 31, 13},
-        {193, 193, 31, 13}
-    };
-    
-    tiles = new (std::nothrow) Rect[] {
-        {129, 321, 31, 30},//,   # purple - 0
-        {161, 321, 31, 31},//,   # dark blue - 1
-        {129, 353, 31, 31},//,   # red - 2
-        {161, 353, 31, 31},//,   # green - 3
-        {129, 385, 31, 31} //    # blue - 4
-    };
+}
+
+Arena* Arena::create(int tileNum)
+{
+    Arena *pRet = new(std::nothrow) Arena();
+    if (pRet && pRet->init(tileNum))
+    {
+        pRet->autorelease();
+        return pRet;
+    }
+    else
+    {
+        delete pRet;
+        pRet = nullptr;
+        return nullptr;
+    }
 }
 
 // on "init" you need to initialize your instance
-bool Arena::init()
+bool Arena::init(int tileNum)
 {
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
-    makeBackground(4);
+    makeBackground(tileNum);
     return true;
 }
 
 Arena::~Arena()
 {
-    delete[] borders;
 }
 
 void Arena::makeBackground(int tilenum)
 {
-    int bordertop[] = {6, 4, 4, 4, 5, 4, 4, 4, 4, 5, 4, 4, 4, 7};
-    int borderleft[] = {0, 0, 2, 0, 0, 2, 0, 0, 2, 0, 0, 2, 0, 0};
-    int borderright[] = {1, 1, 3, 1, 1, 3, 1, 1, 3, 1, 1, 3, 1, 1};
-    
     for (int x = 0; x < 14; x++) {
-        auto border = drawTile(borders[bordertop[x]], x, numYTiles);
-        auto pb = PhysicsBody::createBox(borders[bordertop[x]].size);
+        auto border = drawTile(borderNames[bordertop[x]], x, numYTiles);
+        auto pb = PhysicsBody::createBox(border->getContentSize() , PhysicsMaterial(0.1f, 1, 0.0f));
         pb->setGravityEnable(false);
-        pb->setCategoryBitmask(0x01);    // 0001
-        pb->setContactTestBitmask(0xff); // 1000
-        pb->setCollisionBitmask(0xff);   // 0001
+        pb->setCategoryBitmask(0x08);    // 1000
+        pb->setContactTestBitmask(0x01); // 0111
+        pb->setCollisionBitmask(0x01);   // 0001
         pb->setDynamic(false);
         border->addComponent(pb);
     }
     for (int y = 0; y < 14; y++) {
-        auto border = drawTile(borders[borderleft[y]], 0, y);
-        auto pb = PhysicsBody::createBox(borders[borderleft[y]].size);
+        auto border = drawTile(borderNames[borderleft[y]], 0, y);
+        auto pb = PhysicsBody::createBox(border->getContentSize() + Size(0,2), PhysicsMaterial(0.1f, 1, 0.0f));
         pb->setGravityEnable(false);
-        pb->setCategoryBitmask(0x01);    // 0001
-        pb->setContactTestBitmask(0xff); // 1000
-        pb->setCollisionBitmask(0xff);   // 0001
+        pb->setCategoryBitmask(0x08);    // 1000
+        pb->setContactTestBitmask(0x01); // 0010
+        pb->setCollisionBitmask(0x01);   // 0001
         pb->setDynamic(false);
         border->addComponent(pb);
 
-        border = drawTile(borders[borderright[y]], numXTiles + 1, y);
-        pb = PhysicsBody::createBox(borders[borderright[y]].size);
+        border = drawTile(borderNames[borderright[y]], numXTiles + 1, y);
+        pb = PhysicsBody::createBox(border->getContentSize() + Size(0,2),  PhysicsMaterial(0.1f, 1, 0.0f));
         pb->setGravityEnable(false);
-        pb->setCategoryBitmask(0x01);    // 0001
-        pb->setContactTestBitmask(0xff); // 1000
-        pb->setCollisionBitmask(0xff);   // 0001
+        pb->setCategoryBitmask(0x08);    // 1000
+        pb->setContactTestBitmask(0x01); // 0010
+        pb->setCollisionBitmask(0x01);   // 0001
         pb->setDynamic(false);
         border->addComponent(pb);
     }
@@ -94,10 +84,10 @@ void Arena::makeBackground(int tilenum)
     }
 }
 
-Sprite* Arena::drawTile(Rect imageRect, int x, int y)
+Sprite* Arena::drawTile(std::string frameName, int x, int y)
 {
-    auto sprite = Sprite::create("arinoid_master.png", imageRect);
-    sprite->setPosition(Vec2(topx + x * tileSize, topy + tileSize * y));
+    auto sprite = Sprite::createWithSpriteFrameName(frameName);
+    sprite->setPosition(Vec2(x * tileSize, tileSize * y));
     sprite->setAnchorPoint(Vec2::ANCHOR_MIDDLE_BOTTOM);
     addChild(sprite);
     return sprite;

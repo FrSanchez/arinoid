@@ -14,6 +14,8 @@ class Paddle : public cocos2d::Sprite
 {
 public:
     virtual bool init();
+    void die(std::function<void()> _callback);
+    void start();
     CREATE_FUNC(Paddle);
 };
 

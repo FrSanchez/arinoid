@@ -10,6 +10,8 @@
 
 #include "cocos2d.h"
 
+#define BALL_TAG 0x31
+
 class Ball : public cocos2d::Sprite
 {
 public:
