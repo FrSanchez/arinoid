@@ -15,7 +15,7 @@ bool Ball::init()
     setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     setTag(BALL_TAG);
     
-    auto pb = PhysicsBody::createCircle(5.5, PhysicsMaterial(0.1f, 1, 0.0f));
+    auto pb = PhysicsBody::createCircle(_contentSize.width / 2.5, PhysicsMaterial(0.1f, 1, 0.0f));
     pb->setGravityEnable(false);
     pb->setDynamic(true);
     pb->setCategoryBitmask(0x01);

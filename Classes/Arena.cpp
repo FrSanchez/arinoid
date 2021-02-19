@@ -32,13 +32,26 @@ Arena* Arena::create(int tileNum)
     }
 }
 
+void Arena::setTile(int tileNum)
+{
+    tileNum %= 6;
+    auto children = getChildren();
+    for (auto iter : children){
+        Sprite* sprite = dynamic_cast<Sprite *>(iter);
+        if (sprite->getTag() == 0x11) {
+            sprite->setSpriteFrame(tiles[tileNum]);
+        }
+    }
+}
+
 // on "init" you need to initialize your instance
 bool Arena::init(int tileNum)
 {
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
-    
+    setTag(ARENA_TAG);
     makeBackground(tileNum);
+    setContentSize(Size((1 + numXTiles) * tileSize, ( 1 + numYTiles) * tileSize));
     return true;
 }
 
@@ -50,38 +63,26 @@ void Arena::makeBackground(int tilenum)
 {
     for (int x = 0; x < 14; x++) {
         auto border = drawTile(borderNames[bordertop[x]], x, numYTiles);
-        auto pb = PhysicsBody::createBox(border->getContentSize() , PhysicsMaterial(0.1f, 1, 0.0f));
-        pb->setGravityEnable(false);
-        pb->setCategoryBitmask(0x08);    // 1000
-        pb->setContactTestBitmask(0x01); // 0111
-        pb->setCollisionBitmask(0x01);   // 0001
-        pb->setDynamic(false);
-        border->addComponent(pb);
     }
     for (int y = 0; y < 14; y++) {
         auto border = drawTile(borderNames[borderleft[y]], 0, y);
-        auto pb = PhysicsBody::createBox(border->getContentSize() + Size(0,2), PhysicsMaterial(0.1f, 1, 0.0f));
-        pb->setGravityEnable(false);
-        pb->setCategoryBitmask(0x08);    // 1000
-        pb->setContactTestBitmask(0x01); // 0010
-        pb->setCollisionBitmask(0x01);   // 0001
-        pb->setDynamic(false);
-        border->addComponent(pb);
-
         border = drawTile(borderNames[borderright[y]], numXTiles + 1, y);
-        pb = PhysicsBody::createBox(border->getContentSize() + Size(0,2),  PhysicsMaterial(0.1f, 1, 0.0f));
-        pb->setGravityEnable(false);
-        pb->setCategoryBitmask(0x08);    // 1000
-        pb->setContactTestBitmask(0x01); // 0010
-        pb->setCollisionBitmask(0x01);   // 0001
-        pb->setDynamic(false);
-        border->addComponent(pb);
     }
     for(int x = 0; x < numXTiles; x++) {
         for (int y = 0; y < numYTiles; y++) {
-            drawTile(tiles[tilenum], x + 1, y );
+            auto tile = drawTile(tiles[tilenum], x + 1, y );
+            tile->setTag(0x11);
         }
     }
+    
+    auto pb = PhysicsBody::createEdgeBox(Size(numXTiles * tileSize, numYTiles * tileSize), PhysicsMaterial(0.1f, 1, 0.0f));
+    pb->setPositionOffset(Vec2((1 + numXTiles) * tileSize / 2 , ( numYTiles) * tileSize / 2 ));
+    pb->setGravityEnable(false);
+    pb->setCategoryBitmask(0x08);    // 1000
+    pb->setContactTestBitmask(0x01); // 0001
+    pb->setCollisionBitmask(0x01);   // 0001
+    pb->setDynamic(false);
+    addComponent(pb);
 }
 
 Sprite* Arena::drawTile(std::string frameName, int x, int y)

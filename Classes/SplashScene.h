@@ -10,6 +10,7 @@
 
 #include "cocos2d.h"
 #include "GameScene.h"
+#include "PowerUp.h"
 
 class SplashScene : public cocos2d::Scene
 {

@@ -70,7 +70,7 @@ void Paddle::die(std::function<void(void)> callback)
     animFrames.pushBack( frameCache->getSpriteFrameByName("paddle3"));
     animFrames.pushBack( frameCache->getSpriteFrameByName("paddle2"));
     animFrames.pushBack( frameCache->getSpriteFrameByName("paddle1"));
-    auto animation = Animation::createWithSpriteFrames(animFrames, 0.2f);
+    auto animation = Animation::createWithSpriteFrames(animFrames, 0.15f);
     auto seq = Sequence::create(Animate::create(animation), CallFunc::create([&, callback](){
         this->setVisible(false);
         if (callback != nullptr)

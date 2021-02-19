@@ -25,7 +25,6 @@
 #include "AppDelegate.h"
 #include "GameScene.h"
 #include "SplashScene.h"
-#include "HelloWorldScene.h"
 
 // #define USE_AUDIO_ENGINE 1
 
@@ -82,13 +81,20 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
-    glview->setDesignResolutionSize(430, 752, ResolutionPolicy::NO_BORDER);
+    glview->setDesignResolutionSize(430, 752, ResolutionPolicy::SHOW_ALL);
     
     auto spritecache = SpriteFrameCache::getInstance();
     spritecache->addSpriteFramesWithFile("arinoid.plist");
     
     auto scene = SplashScene::createScene();
     director->runWithScene(scene);
+    
+    
+    AudioEngine::preload("1.mp3");
+    AudioEngine::preload("2.mp3");
+    AudioEngine::preload("9.mp3");
+    AudioEngine::preload("10.mp3");
+    AudioEngine::preload("11.mp3");
     
     return true;
 }

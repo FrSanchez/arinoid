@@ -39,7 +39,7 @@ bool Brick::init(cocos2d::Vec2 pos, int value)
     }
     setUserData(data);
     
-    auto pb = PhysicsBody::createBox(Size(57,11),  PhysicsMaterial(0.1f, 0.9995, 0.0f));
+    auto pb = PhysicsBody::createBox(_contentSize,  PhysicsMaterial(0.1f, 0.9995, 0.0f));
     pb->setDynamic(false);
     pb->setGravityEnable(false);
     pb->setCategoryBitmask(0x02);    // 0010

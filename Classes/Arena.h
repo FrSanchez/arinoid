@@ -10,8 +10,11 @@
 
 #include "cocos2d.h"
 
+#define ARENA_TAG 0x2f
+
 class Arena : public cocos2d::Node
 {
+private:
     int tileSize;
     int numXTiles;
     int numYTiles;
@@ -24,12 +27,13 @@ public:
     static Arena* create(int tileNum);
     virtual bool init(int tileNum);
     ~Arena();
+    void setTile(int tileNum);
     
     constexpr static const char * const borderNames[8] = { "leftBorder", "rightBorder",
         "leftSpecialBorder", "rightSpecialBorder",
         "plainBorder", "specialBorder", "upperLeftBorder", "upperRightBorder" };
     
-    constexpr static const char * const tiles[6] = {"purpleTile","darkBlueTile", "redTile", "greenTile",  "blueTile", "darkPurple"};
+    constexpr static const char * const tiles[6] = {"purpleTile", "darkBlueTile", "redTile", "greenTile",  "blueTile", "darkPurple"};
     
     constexpr static const int bordertop[] = {6, 4, 4, 4, 5, 4, 4, 4, 4, 5, 4, 4, 4, 7};
     constexpr static const int borderleft[] = {0, 0, 2, 0, 0, 2, 0, 0, 2, 0, 0, 2, 0, 0};

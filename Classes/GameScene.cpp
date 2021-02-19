@@ -9,7 +9,7 @@
 #include "SplashScene.h"
 
 USING_NS_CC;
-
+#define GAME_FONT "font1.fnt"
 std::string itoa(int value, int base);
 
 Scene* GameScene::createScene()
@@ -26,9 +26,9 @@ bool GameScene::init()
     {
         return false;
     }
-    
-    _level = 2;
-    _score = 0;
+
+    _level = 1;
+    _lives = 3;
 //    _physicsWorld->setDebugDrawMask( PhysicsWorld::DEBUGDRAW_ALL );
     
     auto size = Director::getInstance()->getVisibleSize();
@@ -39,18 +39,20 @@ bool GameScene::init()
     title->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     addChild(title);
     
-    auto arena = Arena::create(4);
-    arena->setPosition(Vec2(0, 96));
+    auto arena = Arena::create(_level);
+    arena->setPosition(Vec2(size.width / 2 + 0, size.height / 2));
     arena->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     addChild(arena);
         
-    auto score = Sprite::createWithSpriteFrameName("score");
+//    auto score = Sprite::createWithSpriteFrameName("score");
+    auto score = Label::createWithBMFont(GAME_FONT, "SCORE:");
     score->setPosition(Vec2(size.width / 2, size.height - 128));
     score->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     addChild(score);
     
-    auto scoreLbl = Label::createWithTTF("0", "fonts/Marker Felt.ttf", 18);
-    scoreLbl->setTextColor(Color4B(252, 217, 197, 255));
+//    auto scoreLbl = Label::createWithTTF("0", "fonts/Marker Felt.ttf", 18);
+    auto scoreLbl = Label::createWithBMFont(GAME_FONT, "0");
+//    scoreLbl->setTextColor(Color4B(252, 217, 197, 255));
     scoreLbl->setTag(0x22);
     auto pos = score->getPosition();
     pos.x += score->getContentSize().width / 2 + 16;
@@ -64,13 +66,44 @@ bool GameScene::init()
     contactListener->onContactBegin = CC_CALLBACK_1(GameScene::onContactBegin, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(contactListener, this);
     
-    makeLevel(arena, _level);
+// Togle debug
+    MenuItemFont::setFontSize(18);
+    auto item = MenuItemFont::create("Toggle debug", [&](Ref* pSender) {
+        _debugDraw = !_debugDraw;
+        _physicsWorld->setDebugDrawMask(_debugDraw ? PhysicsWorld::DEBUGDRAW_ALL : PhysicsWorld::DEBUGDRAW_NONE);
+    });
+    
+    auto menu = Menu::create(item, nullptr);
+    this->addChild(menu);
+    menu->setPosition(Vec2(size.width - item->getContentSize().width / 2 - 10, size.height - item->getContentSize().height / 2 - 10));
+// toggle debug end
+    
+// cheat level begin
+    item = MenuItemFont::create("next Level", [&](Ref* pSender) {
+        winLevel();
+    });
+    
+    menu = Menu::create(item, nullptr);
+    this->addChild(menu);
+    menu->setPosition(Vec2(item->getContentSize().width / 2 + 10, size.height - item->getContentSize().height / 2 - 10));
+// cheat level end
     
     _ball = Ball::create();
     arena->addChild(_ball);
     
-    schedule(CC_SCHEDULE_SELECTOR(GameScene::tick));
+    _level = 1;
+    initLevel();
     
+    return true;
+}
+
+void GameScene::initLevel()
+{
+    auto arena = static_cast<Arena*>(getChildByTag(ARENA_TAG));
+    makeLevel(arena, _level);
+    _score = 0;
+//    schedule(CC_SCHEDULE_SELECTOR(GameScene::tick));
+
     _livesSprites.empty();
     for(int i = 0; i < _lives; i++)
     {
@@ -83,8 +116,6 @@ bool GameScene::init()
     }
 
     initRound();
-    
-    return true;
 }
 
 void GameScene::endScene(float dt)
@@ -112,19 +143,23 @@ void GameScene::initRound()
         scheduleOnce(CC_SCHEDULE_SELECTOR(GameScene::endScene), 2);
         return;
     }
-    auto str = StringUtils::format("ROUUND  %d", _level);
-    auto roundLbl = Label::createWithTTF(str.c_str(), "fonts/Marker Felt.ttf", 32);
+    auto str = StringUtils::format("ROUND  %d", _level);
+//    auto roundLbl = Label::createWithTTF(str.c_str(), "fonts/Marker Felt.ttf", 32);
+    auto roundLbl = Label::createWithBMFont(GAME_FONT, str.c_str());
     addChild(roundLbl);
     roundLbl->setPosition(Vec2(size.width / 2, size.height / 2 - 92));
-    roundLbl->setTextColor(Color4B(252, 217, 197, 255));
+//    roundLbl->setTextColor(Color4B(252, 217, 197, 255));
     
-    auto getReady = Sprite::createWithSpriteFrameName("getReady");//(SPRITESHEET, Rect(201, 361, 167 , 17));
+    
+//    auto getReady = Sprite::createWithSpriteFrameName("getReady");//(SPRITESHEET, Rect(201, 361, 167 , 17));
+    auto getReady = Label::createWithBMFont(GAME_FONT, "GET READY!");
     getReady->setPosition(Vec2(size.width / 2, size.height / 2 - 124));
     addChild(getReady);
 
     scheduleOnce([=](float dt){
-        int x = cocos2d::random(0, 10) > 5 ? 100 : -100;
-        _ball->getPhysicsBody()->setVelocity(Vec2(x, 100));
+        int x = cocos2d::random(0, 10) > 5 ? 150 : -150;
+        _ball->setPosition(_paddle->getPosition());
+        _ball->getPhysicsBody()->setVelocity(Vec2(x, 150));
         roundLbl->removeFromParentAndCleanup(true);
         getReady->removeFromParentAndCleanup(true);
         if (_livesSprites.size() > 0) {
@@ -139,6 +174,7 @@ void GameScene::initRound()
 
 void GameScene::die()
 {
+    AudioEngine::play2d("10.mp3", false, 1.0f);
     _ball->setPosition(128, 128);
     _ball->getPhysicsBody()->setVelocity(Vec2::ZERO);
     _ball->setVisible(false);
@@ -155,15 +191,46 @@ void GameScene::tick(float dt)
 
 void GameScene::makeLevel(Arena* arena, int level)
 {
+    _brickCount = 0;
     level--;
+    _brickCount = 0;
+    Node* brick = nullptr;
+    do {
+        brick = arena->getChildByTag(TAG_BRICK);
+        if (brick) {
+            brick->removeFromParentAndCleanup(true);
+        }
+    } while(brick);
+    
+    arena->setTile(level);
     for (int y = 0; y < 24; y++) {
         for(int x = 0; x < 12; x++) {
             if (levels[level][y][x] > 0) {
                 auto brick = Brick::create(Vec2(x + 1, y + 4), levels[level][y][x]);
-                arena->addChild(brick);
+                if (brick) {
+                    arena->addChild(brick);
+                    _brickCount++;
+                }
             }
         }
     }
+}
+
+void GameScene::winLevel()
+{
+    _level++;
+    if (_level > maxLevel) {
+        endScene(0);
+        return;
+    }
+    AudioEngine::play2d("9.mp3", false, 1.0);
+    _ball->setPosition(128, 128);
+    _ball->getPhysicsBody()->setVelocity(Vec2::ZERO);
+    _ball->setVisible(false);
+    _paddle->setVisible(false);
+    scheduleOnce([&](float dt) {
+        this->initLevel();
+    }, 1, "won");
 }
 
 bool GameScene::onContactBegin(PhysicsContact& contact)
@@ -171,7 +238,21 @@ bool GameScene::onContactBegin(PhysicsContact& contact)
     PhysicsBody* a = contact.getShapeA()->getBody();
     PhysicsBody* b = contact.getShapeB()->getBody();
     
+    AudioEngine::play2d("1.mp3", false, 1.0f);
+    CCLOG("%s %s", itoa(a->getCategoryBitmask(), 2).c_str(), itoa(b->getCategoryBitmask(), 2).c_str());
+    Ball* ball = static_cast<Ball*>( (a->getCategoryBitmask() == 0x01) ? a->getNode() : b->getNode() );
+    Arena* arena = static_cast<Arena*>( (a->getNode()->getTag() == ARENA_TAG) ? a->getNode() : b->getNode() );
     Brick* brick = static_cast<Brick*>( (a->getNode()->getTag() == TAG_BRICK) ? a->getNode() : b->getNode() );
+    
+    if (ball->getTag() == BALL_TAG && arena->getTag() == ARENA_TAG ) {
+        CCLOG("pos %f, %f  , vel %f, %f", ball->getPosition().x, ball->getPosition().y, ball->getPhysicsBody()->getVelocity().x, ball->getPhysicsBody()->getVelocity().y);
+        // find if hit the bottom wall, by checing velocity y is negative and if the ball is lower than the paddle
+        if (_ball->getPosition().y < _paddle->getPosition().y - _paddle->getContentSize().height
+            && _ball->getPhysicsBody()->getVelocity().y < 0) {
+            die();
+        }
+    }
+    
     if (brick->getTag() == TAG_BRICK) {
         auto *data = static_cast<Brick::BrickData *>(brick->getUserData());
         if (data->hits > 0) {
@@ -181,8 +262,13 @@ bool GameScene::onContactBegin(PhysicsContact& contact)
             addToScore(data->value);
             brick->removeFromParentAndCleanup(true);
             CC_SAFE_DELETE(data);
+            _brickCount--;
+            if (_brickCount <= 0) {
+                winLevel();
+            }
         }
     }
+    
     
     return true;
 }
@@ -196,37 +282,37 @@ void GameScene::addToScore(int value)
         scoreLbl->setString(str.c_str());
     }
 }
-//
-///**
-//     * C++ version 0.4 std::string style "itoa":
-//     * Contributions from Stuart Lowe, Ray-Yuan Sheu,
-//
-//     * Rodrigo de Salvo Braz, Luc Gallant, John Maloney
-//     * and Brian Hunt
-//     */
-//std::string itoa(int value, int base) {
-//
-//    std::string buf;
-//
-//    // check that the base if valid
-//    if (base < 2 || base > 16) return buf;
-//
-//    enum { kMaxDigits = 35 };
-//    buf.reserve( kMaxDigits ); // Pre-allocate enough space.
-//
-//
-//    int quotient = value;
-//
-//    // Translating number to string with base:
-//    do {
-//        buf += "0123456789abcdef"[ std::abs( quotient % base ) ];
-//        quotient /= base;
-//    } while ( quotient );
-//
-//    // Append the negative sign
-//    if ( value < 0) buf += '-';
-//
-//    std::reverse( buf.begin(), buf.end() );
-//    return buf;
-//}
-//
+
+/**
+     * C++ version 0.4 std::string style "itoa":
+     * Contributions from Stuart Lowe, Ray-Yuan Sheu,
+
+     * Rodrigo de Salvo Braz, Luc Gallant, John Maloney
+     * and Brian Hunt
+     */
+std::string itoa(int value, int base) {
+
+    std::string buf;
+
+    // check that the base if valid
+    if (base < 2 || base > 16) return buf;
+
+    enum { kMaxDigits = 35 };
+    buf.reserve( kMaxDigits ); // Pre-allocate enough space.
+
+
+    int quotient = value;
+
+    // Translating number to string with base:
+    do {
+        buf += "0123456789abcdef"[ std::abs( quotient % base ) ];
+        quotient /= base;
+    } while ( quotient );
+
+    // Append the negative sign
+    if ( value < 0) buf += '-';
+
+    std::reverse( buf.begin(), buf.end() );
+    return buf;
+}
+
