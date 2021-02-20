@@ -16,6 +16,7 @@ bool Paddle::init()
     }
     
     initWithSpriteFrameName("paddle");
+    setPaddleImage(paddleImages::NORMAL);
     setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     
     auto pb = PhysicsBody::createBox(getContentSize(), PhysicsMaterial(0.1f, 1.05, 0.0f) );
@@ -84,5 +85,25 @@ void Paddle::die(std::function<void(void)> callback)
 void Paddle::start()
 {
     setVisible(true);
-    this->setSpriteFrame("paddle");
+    this->setSpriteFrame(_currentFrame);
+}
+
+void Paddle::setPaddleImage(paddleImages image)
+{
+    _currentFrame = tiles[image];
+//    switch(image)
+//    {
+//    case paddleImages::NORMAL:
+//            _currentFrame = "paddle";
+//        break;
+//    case paddleImages::SMALL:
+//            _currentFrame = "paddleSmall";
+//        break;
+//    case paddleImages::LARGE:
+//            _currentFrame = "paddleLarge";
+//        break;
+//    case paddleImages::FIRE:
+//            _currentFrame = "paddleFire";
+//        break;
+//    }
 }
