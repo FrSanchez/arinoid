@@ -56,7 +56,7 @@
         <key>jxrCompressionLevel</key>
         <uint>0</uint>
         <key>ditherType</key>
-        <enum type="SettingsBase::DitherType">NearestNeighbour</enum>
+        <enum type="SettingsBase::DitherType">PngQuantLow</enum>
         <key>backgroundColor</key>
         <uint>0</uint>
         <key>libGdx</key>
@@ -130,6 +130,10 @@
         <key>dataFileNames</key>
         <map type="GFileNameMap">
             <key>data</key>
+            <struct type="DataFile">
+                <key>name</key>
+                <filename>../Resources/spritesheet.plist</filename>
+            </struct>
             <key>header</key>
             <key>source</key>
             <struct type="DataFile">
@@ -153,7 +157,7 @@
         <key>autoAliasEnabled</key>
         <false/>
         <key>trimSpriteNames</key>
-        <false/>
+        <true/>
         <key>prependSmartFolderName</key>
         <false/>
         <key>autodetectAnimations</key>
@@ -182,9 +186,187 @@
             <false/>
         </struct>
         <key>individualSpriteSettings</key>
-        <map type="IndividualSpriteSettingsMap"/>
+        <map type="IndividualSpriteSettingsMap">
+            <key type="filename">arinoid.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>256,65,512,130</rect>
+                <key>scale9Paddings</key>
+                <rect>256,65,512,130</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">ballBlue.png</key>
+            <key type="filename">ballGrey.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>6,6,11,11</rect>
+                <key>scale9Paddings</key>
+                <rect>6,6,11,11</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">element_blue_rectangle_glossy.png</key>
+            <key type="filename">element_green_rectangle_glossy.png</key>
+            <key type="filename">element_grey_rectangle_glossy.png</key>
+            <key type="filename">element_purple_rectangle_glossy.png</key>
+            <key type="filename">element_red_rectangle_glossy.png</key>
+            <key type="filename">element_yellow_rectangle_glossy.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>16,8,32,16</rect>
+                <key>scale9Paddings</key>
+                <rect>16,8,32,16</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">paddleBlu.png</key>
+            <key type="filename">paddleRed.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>26,6,52,12</rect>
+                <key>scale9Paddings</key>
+                <rect>26,6,52,12</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">paddleLife.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>28,6,56,12</rect>
+                <key>scale9Paddings</key>
+                <rect>28,6,56,12</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">particleCartoonStar.png</key>
+            <key type="filename">particleSmallStar.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>3,3,5,5</rect>
+                <key>scale9Paddings</key>
+                <rect>3,3,5,5</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">particleStar.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>5,5,10,11</rect>
+                <key>scale9Paddings</key>
+                <rect>5,5,10,11</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">tile.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>48,48,96,96</rect>
+                <key>scale9Paddings</key>
+                <rect>48,48,96,96</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">title-small.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>19,7,37,13</rect>
+                <key>scale9Paddings</key>
+                <rect>19,7,37,13</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">title.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>40,21,81,41</rect>
+                <key>scale9Paddings</key>
+                <rect>40,21,81,41</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+        </map>
         <key>fileList</key>
-        <array/>
+        <array>
+            <filename>tile.png</filename>
+            <filename>title-small.png</filename>
+            <filename>title.png</filename>
+            <filename>paddleLife.png</filename>
+            <filename>arinoid.png</filename>
+            <filename>element_blue_rectangle_glossy.png</filename>
+            <filename>element_green_rectangle_glossy.png</filename>
+            <filename>element_grey_rectangle_glossy.png</filename>
+            <filename>element_purple_rectangle_glossy.png</filename>
+            <filename>element_red_rectangle_glossy.png</filename>
+            <filename>element_yellow_rectangle_glossy.png</filename>
+            <filename>particleCartoonStar.png</filename>
+            <filename>particleSmallStar.png</filename>
+            <filename>particleStar.png</filename>
+            <filename>ballBlue.png</filename>
+            <filename>ballGrey.png</filename>
+            <filename>paddleBlu.png</filename>
+            <filename>paddleRed.png</filename>
+        </array>
         <key>ignoreFileList</key>
         <array/>
         <key>replaceList</key>

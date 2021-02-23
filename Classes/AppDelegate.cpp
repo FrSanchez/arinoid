@@ -65,12 +65,20 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
+    
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("spritesheet.plist");
+    SpriteFrame *frame = SpriteFrameCache::getInstance()->getSpriteFrameByName("tile");
+    float tileSize = frame->getOriginalSize().width;
+    
+    float width = tileSize * 14;
+    float height = tileSize * 18;
+    
     if(!glview)
     {
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
         glview = GLViewImpl::create(APP_NAME);
 #else
-        glview = cocos2d::GLViewImpl::createWithRect(APP_NAME, Rect(0,0,430,752));
+        glview = cocos2d::GLViewImpl::createWithRect(APP_NAME, Rect(0,0,width, height));
 //        glview->setFrameZoomFactor(.5f);
 #endif
         director->setOpenGLView(glview);
@@ -81,20 +89,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
-    glview->setDesignResolutionSize(750, 1334, ResolutionPolicy::SHOW_ALL);
+    glview->setDesignResolutionSize(width, height, ResolutionPolicy::SHOW_ALL);
     
-    auto spritecache = SpriteFrameCache::getInstance();
-    spritecache->addSpriteFramesWithFile("arinoid.plist");
+    FileUtils::getInstance()->addSearchPath("audio");
     
     auto scene = SplashScene::createScene();
     director->runWithScene(scene);
-    
-    FileUtils::getInstance()->addSearchPath("audio");
-    AudioEngine::preload("1.mp3");
-    AudioEngine::preload("2.mp3");
-    AudioEngine::preload("9.mp3");
-    AudioEngine::preload("10.mp3");
-    AudioEngine::preload("11.mp3");
     
     return true;
 }

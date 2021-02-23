@@ -28,6 +28,10 @@ private:
     void endScene(float dt);
     void winLevel();
     void initLevel();
+    cocos2d::Node* createShadow(cocos2d::Vec2 pos, cocos2d::Color4F color);
+    
+    float initialVelocity = 0;
+    
     int _brickCount;
     bool _debugDraw = false;
 

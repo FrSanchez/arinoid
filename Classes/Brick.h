@@ -18,6 +18,7 @@ public:
     virtual bool init(cocos2d::Vec2 pos, int value);
     static Brick* create(cocos2d::Vec2 pos, int value);
     void updateImage();
+    void remove();
 
     typedef struct _brickData {
         int value;
@@ -25,9 +26,14 @@ public:
         std::string frame;
     } BrickData;
     
-    constexpr static const char * const tiles[10] = { "yellowBrick", "greenBrick", "redBrick", "darkOrangeBrick",
-        "purpleBrick", "orangeBrick", "lightBlueBrick", "darkBlueBrick", "lightGrayBrick", "darkGrayBrick"
-    };
+//    constexpr static const char * const tiles[10] = { "yellowBrick", "greenBrick", "redBrick", "darkOrangeBrick",
+//        "purpleBrick", "orangeBrick", "lightBlueBrick", "darkBlueBrick", "lightGrayBrick", "darkGrayBrick"
+//    };
+//    static const std::string tiles[];
+    const static std::vector<std::string> tiles;
+    
+    static const cocos2d::Color3B colors[];
+
 };
 
 

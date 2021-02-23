@@ -21,14 +21,17 @@ class Paddle : public cocos2d::Sprite
 {
 private:
     std::string _currentFrame;
+    float minX, maxX;
+    bool _active;
 public:
     virtual bool init();
     void die(std::function<void()> _callback);
     void start();
     void setPaddleImage(paddleImages image);
+    void setArenaWidth(float width);
     CREATE_FUNC(Paddle);
 
-    constexpr static const char * const tiles[4] = { "paddle", "paddleSmall", "paddleLarge", "paddleFire" };
+    constexpr static const char * const tiles[4] = { "paddleRed", "paddleBlue", "paddleRed", "paddleRed" };
     
 };
 
