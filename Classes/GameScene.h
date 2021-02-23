@@ -34,6 +34,7 @@ private:
     
     int _brickCount;
     bool _debugDraw = false;
+    int _gainLevelThreshold;
 
     cocos2d::Vector<cocos2d::Sprite*> _livesSprites;
 

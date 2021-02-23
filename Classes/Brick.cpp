@@ -53,7 +53,7 @@ void Brick::remove()
     auto emitter = ParticleFlower::create();
     emitter->retain();
     emitter->isAutoRemoveOnFinish();
-    emitter->setSpeed(400);
+    emitter->setSpeed(200);
     emitter->setPosition(getPosition());
     emitter->setDuration(0.5);
     getParent()->addChild(emitter);

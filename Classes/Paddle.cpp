@@ -85,25 +85,28 @@ void Paddle::die(std::function<void(void)> callback)
 //        }
 //    }), nullptr);
 //    runAction(seq);
-    auto _emitter = ParticleExplosion::create();
-    _emitter->retain();
-    _emitter->setSpeed(900);
-    getParent()->addChild(_emitter);
-    _emitter->setPosition(getPosition());
-
-    setTexture("stars.png");
-    _emitter->setTexture( Director::getInstance()->getTextureCache()->addImage("stars.png") );
-
-    _emitter->setAutoRemoveOnFinish(true);
-    auto size = getContentSize();
+    
     scheduleOnce([&, callback](float dt) {
         if (callback) {
             callback();
         }
     }, 1, "died");
     _active = false;
-    setVisible(false);
-
+    
+    auto seq = Sequence::create(ResizeTo::create(0.1, Size(64, 32)),
+                                Spawn::createWithTwoActions(
+                                ResizeTo::create(0.2, Size(100, 25)), CallFunc::create([&](){
+        auto _emitter = ParticleExplosion::create();
+        _emitter->retain();
+        _emitter->setSpeed(200);
+        _emitter->setPosition(getPosition());
+        getParent()->addChild(_emitter);
+        _emitter->setTexture( Director::getInstance()->getTextureCache()->addImage("stars.png") );
+        _emitter->setAutoRemoveOnFinish(true);
+        _emitter->setDuration(0.5);
+        setVisible(false);
+    })), nullptr);
+    this->runAction(seq);
 }
 
 void Paddle::start()

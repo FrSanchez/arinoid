@@ -29,6 +29,7 @@ bool GameScene::init()
     }
 
     _level = 1;
+    _gainLevelThreshold = 1000;
     _lives = 3;
 //    _physicsWorld->setDebugDrawMask( PhysicsWorld::DEBUGDRAW_ALL );
     
@@ -301,11 +302,16 @@ bool GameScene::onContactBegin(PhysicsContact& contact)
 void GameScene::addToScore(int value)
 {
     _score += value;
+    if (_score > _gainLevelThreshold) {
+        _lives++;
+        _gainLevelThreshold *= 1.1;
+    }
     Label* scoreLbl = static_cast<Label*>(getChildByTag(0x22));
     if (scoreLbl) {
         auto str = StringUtils::format("SCORE: %d", _score);
         scoreLbl->setString(str.c_str());
     }
+
 }
 
 /**
