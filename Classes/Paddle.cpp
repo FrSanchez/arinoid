@@ -65,8 +65,8 @@ bool Paddle::init()
 
 void Paddle::setArenaWidth(float width)
 {
-    minX = getContentSize().width;
-    maxX = width - getContentSize().width ;
+    minX = getContentSize().width / 2;
+    maxX = width - getContentSize().width / 2 ;
 }
 
 void Paddle::die(std::function<void(void)> callback)

@@ -70,8 +70,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     SpriteFrame *frame = SpriteFrameCache::getInstance()->getSpriteFrameByName("tile");
     float tileSize = frame->getOriginalSize().width;
     
-    float width = tileSize * 14;
-    float height = tileSize * 18;
+    float width = tileSize * 13;
+    float height = tileSize * 16;
     
     if(!glview)
     {
@@ -91,6 +91,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
     glview->setDesignResolutionSize(width, height, ResolutionPolicy::SHOW_ALL);
     
+    FileUtils::getInstance()->addSearchPath("fonts");
     FileUtils::getInstance()->addSearchPath("audio");
     
     auto scene = SplashScene::createScene();

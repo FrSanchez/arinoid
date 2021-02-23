@@ -29,7 +29,7 @@ bool GameScene::init()
     }
 
     _level = 1;
-    _gainLevelThreshold = 1000;
+    _gainLevelThreshold = 100;
     _lives = 3;
 //    _physicsWorld->setDebugDrawMask( PhysicsWorld::DEBUGDRAW_ALL );
     
@@ -50,7 +50,7 @@ bool GameScene::init()
     addChild(arena);
         
     auto score = Label::createWithBMFont(GAME_FONT, "SCORE: 0");
-    score->setPosition(Vec2(size.width / 2, size.height - 128));
+    score->setPosition(Vec2(size.width / 2, size.height - score->getContentSize().height / 2));
     score->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     score->setTag(0x22);
     addChild(score);
@@ -134,14 +134,21 @@ void GameScene::initLevel()
     
     for(int i = 0; i < _lives; i++)
     {
-        auto sprite = Sprite::createWithSpriteFrameName("paddleLife");
-        sprite->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
-        sprite->setTag(0x1e);
-        sprite->setPosition(Vec2(sprite->getContentSize().width * i * 1.2, 64));
-        addChild(sprite);
-        _livesSprites.pushBack(sprite);
+        addLifeSprite(i);
     }
     initRound();
+}
+
+Sprite* GameScene::addLifeSprite(int pos)
+{
+    auto sprite = Sprite::createWithSpriteFrameName("paddleLife");
+    sprite->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
+    sprite->setTag(0x1e);
+    addChild(sprite);
+    _livesSprites.pushBack(sprite);
+    sprite->setPosition(Vec2(sprite->getContentSize().width * pos * 1.2, sprite->getContentSize().height ));
+    return sprite;
+
 }
 
 void GameScene::endScene(float dt)
@@ -159,27 +166,22 @@ void GameScene::initRound()
     _ball->getPhysicsBody()->setVelocity(Vec2::ZERO);
     _ball->setVisible(false);
 
-    log("Remaining lives: %d" , _lives);
-    
     if (_lives <= 0) {
-//        auto gameOver = Sprite::createWithSpriteFrameName("gameOver");
         auto gameOver = Label::createWithBMFont(GAME_FONT, "GAME OVER!");
         gameOver->setPosition(Vec2(size.width / 2, size.height / 2 - 92));
         addChild(gameOver);
         scheduleOnce(CC_SCHEDULE_SELECTOR(GameScene::endScene), 2);
         return;
     }
-    auto str = StringUtils::format("ROUND  %d", _level);
-//    auto roundLbl = Label::createWithTTF(str.c_str(), "fonts/Marker Felt.ttf", 32);
+    auto str = StringUtils::format("ROUND %d", _level);
+    
     auto roundLbl = Label::createWithBMFont(GAME_FONT, str.c_str());
     addChild(roundLbl);
     roundLbl->setPosition(Vec2(size.width / 2, size.height / 2 - 92));
-//    roundLbl->setTextColor(Color4B(252, 217, 197, 255));
+
     
-    
-//    auto getReady = Sprite::createWithSpriteFrameName("getReady");//(SPRITESHEET, Rect(201, 361, 167 , 17));
     auto getReady = Label::createWithBMFont(GAME_FONT, "GET READY!");
-    getReady->setPosition(Vec2(size.width / 2, size.height / 2 - 124));
+    getReady->setPosition(Vec2(size.width / 2, roundLbl->getPosition().y - roundLbl->getContentSize().height * 2));
     addChild(getReady);
 
     scheduleOnce([=](float dt){
@@ -265,10 +267,11 @@ bool GameScene::onContactBegin(PhysicsContact& contact)
     PhysicsBody* b = contact.getShapeB()->getBody();
     
     AudioEngine::play2d("1.mp3", false, 1.0f);
-    CCLOG("%s %s", itoa(a->getCategoryBitmask(), 2).c_str(), itoa(b->getCategoryBitmask(), 2).c_str());
     Ball* ball = static_cast<Ball*>( (a->getCategoryBitmask() == 0x01) ? a->getNode() : b->getNode() );
     Arena* arena = static_cast<Arena*>( (a->getNode()->getTag() == ARENA_TAG) ? a->getNode() : b->getNode() );
     Brick* brick = static_cast<Brick*>( (a->getNode()->getTag() == TAG_BRICK) ? a->getNode() : b->getNode() );
+    
+    log("contact %s %s", itoa(a->getCategoryBitmask(), 2).c_str(), itoa(b->getCategoryBitmask(), 2).c_str());
     
     if (ball->getTag() == BALL_TAG && arena->getTag() == ARENA_TAG ) {
 //        CCLOG("pos %f, %f  , vel %f, %f", ball->getPosition().x, ball->getPosition().y, ball->getPhysicsBody()->getVelocity().x, ball->getPhysicsBody()->getVelocity().y);
@@ -303,15 +306,17 @@ void GameScene::addToScore(int value)
 {
     _score += value;
     if (_score > _gainLevelThreshold) {
+        _gainLevelThreshold += _gainLevelThreshold * 1.1;
+        AudioEngine::play2d("5.mp3", false, 1.0f);
+        addLifeSprite(MAX(0, _lives - 1));
         _lives++;
-        _gainLevelThreshold *= 1.1;
+        log("Lives: %d threshold: %d", _lives, _gainLevelThreshold);
     }
     Label* scoreLbl = static_cast<Label*>(getChildByTag(0x22));
     if (scoreLbl) {
         auto str = StringUtils::format("SCORE: %d", _score);
         scoreLbl->setString(str.c_str());
     }
-
 }
 
 /**

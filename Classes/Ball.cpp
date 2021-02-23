@@ -26,3 +26,14 @@ bool Ball::init()
         
     return true;
 }
+
+void Ball::pause()
+{
+    _velocity = getPhysicsBody()->getVelocity();
+    getPhysicsBody()->setVelocity(Vec2::ZERO);
+}
+
+void Ball::unPause()
+{
+    getPhysicsBody()->setVelocity(_velocity);
+}

@@ -29,6 +29,7 @@ private:
     void winLevel();
     void initLevel();
     cocos2d::Node* createShadow(cocos2d::Vec2 pos, cocos2d::Color4F color);
+    cocos2d::Sprite* addLifeSprite(int pos);
     
     float initialVelocity = 0;
     
