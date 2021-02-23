@@ -81,7 +81,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
-    glview->setDesignResolutionSize(430, 752, ResolutionPolicy::SHOW_ALL);
+    glview->setDesignResolutionSize(750, 1334, ResolutionPolicy::SHOW_ALL);
     
     auto spritecache = SpriteFrameCache::getInstance();
     spritecache->addSpriteFramesWithFile("arinoid.plist");
@@ -89,7 +89,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto scene = SplashScene::createScene();
     director->runWithScene(scene);
     
-    
+    FileUtils::getInstance()->addSearchPath("audio");
     AudioEngine::preload("1.mp3");
     AudioEngine::preload("2.mp3");
     AudioEngine::preload("9.mp3");

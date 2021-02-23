@@ -49,6 +49,21 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
+            <key>paddleLife</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{19,8}</string>
+                <key>spriteSourceSize</key>
+                <string>{19,8}</string>
+                <key>textureRect</key>
+                <string>{{424,141},{19,8}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
             <key>paddleSmall</key>
             <dict>
                 <key>aliases</key>
@@ -454,6 +469,21 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
+            <key>greenSquaresTile</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{31,31}</string>
+                <key>spriteSourceSize</key>
+                <string>{31,31}</string>
+                <key>textureRect</key>
+                <string>{{64,96},{31,31}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
             <key>blueTile</key>
             <dict>
                 <key>aliases</key>
@@ -468,7 +498,8 @@
                 <string>{{129,385},{31,31}}</string>
                 <key>textureRotated</key>
                 <false/>
-            </dict><key>darkPurple</key>
+            </dict>
+            <key>darkPurple</key>
             <dict>
                 <key>aliases</key>
                 <array/>
