@@ -9,6 +9,64 @@
 
 USING_NS_CC;
 
+void Paddle::powerUpGrow()
+{
+    unschedule("powerupend");
+    setSpriteFrame("paddleBlu");
+    auto seq = Sequence::create(
+                                ResizeTo::create(0.2, Size(_size0.width * 1.5, _contentSize.height)),
+                                CallFunc::create([&](){
+        addPhysicsBody();
+    }), nullptr);
+    runAction(seq);
+    scheduleOnce([&](float dt) {
+        powerUpEnd();
+    }, 5, "powerupend");
+}
+
+void Paddle::powerUpShrink()
+{
+    unschedule("powerupend");
+    setSpriteFrame("paddleBlu");
+    auto seq = Sequence::create(
+                                ResizeTo::create(0.2, Size(_size0.width / 1.5, _contentSize.height)),
+                                CallFunc::create([&](){
+        addPhysicsBody();
+    }), nullptr);
+    runAction(seq);
+    scheduleOnce([&](float dt) {
+        powerUpEnd();
+    }, 5, "powerupend");
+}
+
+void Paddle::powerUpEnd()
+{
+    log("Paddle:  normal size");
+    setSpriteFrame("paddleRed");
+    auto seq = Sequence::create(
+                                ResizeTo::create(0.2, Size(_size0.width, _contentSize.height)),
+                                CallFunc::create([&](){
+        addPhysicsBody();
+    }), nullptr);
+    runAction(seq);
+}
+
+void Paddle::addPhysicsBody()
+{
+    auto pb = getPhysicsBody();
+    if (pb != nullptr) {
+        removeComponent(pb);
+    }
+    pb = PhysicsBody::createBox(getContentSize(), PhysicsMaterial(0.1f, 1, 0.0f) );
+    pb->setDynamic(false);
+    pb->setGravityEnable(false);
+    pb->setCategoryBitmask(0x04);    // 00100
+    pb->setContactTestBitmask(0x11); // 10001
+    pb->setCollisionBitmask(0x11);   // 10001
+    addComponent(pb);
+}
+
+
 bool Paddle::init()
 {
     if (!Sprite::init()) {
@@ -19,15 +77,10 @@ bool Paddle::init()
     initWithSpriteFrameName("paddleRed");
     setPaddleImage(paddleImages::NORMAL);
     setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-    
-    auto pb = PhysicsBody::createBox(getContentSize(), PhysicsMaterial(0.1f, 1.05, 0.0f) );
-    pb->setDynamic(false);
-    pb->setGravityEnable(false);
-    pb->setCategoryBitmask(0x04);    // 0100
-    pb->setContactTestBitmask(0x01); // 0001
-    pb->setCollisionBitmask(0x01);   // 0110
-    addComponent(pb);
-    
+    setTag(PADDLE_TAG);
+    _size0 = getContentSize();
+    addPhysicsBody();
+        
     // Make sprite1 touchable
     auto listener1 = EventListenerTouchOneByOne::create();
     listener1->setSwallowTouches(true);
@@ -85,6 +138,9 @@ void Paddle::die(std::function<void(void)> callback)
 //        }
 //    }), nullptr);
 //    runAction(seq);
+    
+    unscheduleAllCallbacks();
+    stopAllActions();
     
     scheduleOnce([&, callback](float dt) {
         if (callback) {

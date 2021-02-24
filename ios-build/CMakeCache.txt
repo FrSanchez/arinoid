@@ -23,6 +23,12 @@ AVKIT_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPho
 //Path to a library.
 AV_FOUNDATION_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/AVFoundation.framework
 
+//Value Computed by CMake
+Arinoid_BINARY_DIR:STATIC=/Users/francisco.sanchez/Development/games/arinoid/ios-build
+
+//Value Computed by CMake
+Arinoid_SOURCE_DIR:STATIC=/Users/francisco.sanchez/Development/games/arinoid
+
 //Build editor support for cocostudio
 BUILD_EDITOR_COCOSTUDIO:BOOL=ON
 
@@ -209,7 +215,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=arinoid
+CMAKE_PROJECT_NAME:STATIC=Arinoid
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib
@@ -484,6 +490,8 @@ xxtea_SOURCE_DIR:STATIC=/Users/francisco.sanchez/Development/games/arinoid/cocos
 
 //Stored Xcode object GUID
 ALL_BUILD_GUID_CMAKE:INTERNAL=4B402F425A2C4A8FBF784B12
+//Stored Xcode object GUID
+Arinoid_GUID_CMAKE:INTERNAL=315BE57C3CDB4614A3A0E378
 //ADVANCED property for variable: CMAKE_ADDR2LINE
 CMAKE_ADDR2LINE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
@@ -609,6 +617,8 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Stored Xcode object GUID
+PROJECT_Arinoid_GUID_CMAKE:INTERNAL=D7A8D9F8C45B4454A28C4BE4
 //Stored Xcode object GUID
 PROJECT_arinoid_GUID_CMAKE:INTERNAL=8B2434BAD6E548D28EDDAC98
 //Stored Xcode object GUID

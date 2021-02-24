@@ -304,6 +304,22 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">powerup-e.png</key>
+            <key type="filename">powerup-p.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>8,8,16,16</rect>
+                <key>scale9Paddings</key>
+                <rect>8,8,16,16</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">tile.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -374,6 +390,8 @@
             <filename>element_pink_rectangle_glossy.png</filename>
             <filename>element_dark_blue_rectangle_glossy.png</filename>
             <filename>element_white_rectangle_glossy.png</filename>
+            <filename>powerup-e.png</filename>
+            <filename>powerup-p.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

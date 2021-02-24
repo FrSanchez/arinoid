@@ -82,8 +82,8 @@ void Arena::makeBackground(int tilenum)
     pb->setPositionOffset(Vec2((1 + numXTiles) * tileSize / 2 , ( numYTiles) * tileSize / 2 ));
     pb->setGravityEnable(false);
     pb->setCategoryBitmask(0x08);    // 1000
-    pb->setContactTestBitmask(0x01); // 0001
-    pb->setCollisionBitmask(0x01);   // 0001
+    pb->setContactTestBitmask(0x11); // 0001
+    pb->setCollisionBitmask(0x11);   // 0001
     pb->setDynamic(false);
     addComponent(pb);
 }

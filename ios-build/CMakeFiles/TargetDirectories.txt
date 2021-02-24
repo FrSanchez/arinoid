@@ -1,4 +1,4 @@
-/Users/francisco.sanchez/Development/games/arinoid/ios-build/CMakeFiles/arinoid.dir
+/Users/francisco.sanchez/Development/games/arinoid/ios-build/CMakeFiles/Arinoid.dir
 /Users/francisco.sanchez/Development/games/arinoid/ios-build/CMakeFiles/ALL_BUILD.dir
 /Users/francisco.sanchez/Development/games/arinoid/ios-build/CMakeFiles/ZERO_CHECK.dir
 /Users/francisco.sanchez/Development/games/arinoid/ios-build/engine/cocos/core/CMakeFiles/cocos2d.dir

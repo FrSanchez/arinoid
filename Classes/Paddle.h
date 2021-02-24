@@ -10,6 +10,8 @@
 
 #include "cocos2d.h"
 
+#define PADDLE_TAG 0xa1
+
 enum paddleImages {
     NORMAL = 0,
     SMALL = 1,
@@ -20,15 +22,21 @@ enum paddleImages {
 class Paddle : public cocos2d::Sprite
 {
 private:
+    void addPhysicsBody();
+    
     std::string _currentFrame;
     float minX, maxX;
     bool _active;
+    cocos2d::Size _size0;
 public:
     virtual bool init();
     void die(std::function<void()> _callback);
     void start();
     void setPaddleImage(paddleImages image);
     void setArenaWidth(float width);
+    void powerUpGrow();
+    void powerUpShrink();
+    void powerUpEnd();
     CREATE_FUNC(Paddle);
 
     constexpr static const char * const tiles[4] = { "paddleRed", "paddleBlue", "paddleRed", "paddleRed" };

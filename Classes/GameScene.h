@@ -30,8 +30,10 @@ private:
     void initLevel();
     cocos2d::Node* createShadow(cocos2d::Vec2 pos, cocos2d::Color4F color);
     cocos2d::Sprite* addLifeSprite(int pos);
+    int getGainThreshold();
+    cocos2d::Node* getContact(cocos2d::PhysicsBody *a, cocos2d::PhysicsBody *b, int tag);
     
-    float initialVelocity = 0;
+    float initialVelocity;
     
     int _brickCount;
     bool _debugDraw = false;
@@ -356,5 +358,6 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);
+    
 };
 #endif /* GameScene_hpp */

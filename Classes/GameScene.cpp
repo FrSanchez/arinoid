@@ -29,7 +29,7 @@ bool GameScene::init()
     }
 
     _level = 1;
-    _gainLevelThreshold = 100;
+    _gainLevelThreshold = 1;
     _lives = 3;
 //    _physicsWorld->setDebugDrawMask( PhysicsWorld::DEBUGDRAW_ALL );
     
@@ -96,6 +96,10 @@ bool GameScene::init()
     _level = 1;
     initLevel();
     
+    ExtraPower::callbacksMap.clear();
+    ExtraPower::callbacksMap['e'] = CC_CALLBACK_0(Paddle::powerUpGrow, _paddle);
+    ExtraPower::callbacksMap['p'] = CC_CALLBACK_0(Paddle::powerUpShrink, _paddle);
+    
     return true;
 }
 
@@ -104,11 +108,10 @@ Node* GameScene::createShadow(Vec2 pos, Color4F color)
     auto draw = DrawNode::create();
     draw->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     draw->setPosition(pos);
-    // draw a rectangle
 
     draw->drawSolidCircle(Vec2::ZERO, _ball->getContentSize().width , CC_DEGREES_TO_RADIANS(90), 20, 0.5f, 0.5f, color);
     draw->setOpacity(128);
-    auto seq = Sequence::create(FadeOut::create(0.1), CallFunc::create([&, draw](){
+    auto seq = Sequence::create(FadeOut::create(0.15), CallFunc::create([&, draw](){
         draw->removeFromParentAndCleanup(true);
     }), nullptr);
     draw->runAction(seq);
@@ -250,20 +253,33 @@ void GameScene::makeLevel(Arena* arena, int level)
 
 void GameScene::winLevel()
 {
+    _ball->setPosition(0, -128);
+    _ball->getPhysicsBody()->setVelocity(Vec2::ZERO);
+    _ball->setVisible(false);
+    _paddle->setVisible(false);
+
     AudioEngine::stopAll();
     _level++;
     if (_level > maxLevel) {
         endScene(0);
         return;
     }
+
     AudioEngine::play2d("9.mp3", false, 1.0);
-    _ball->setPosition(128, 128);
-    _ball->getPhysicsBody()->setVelocity(Vec2::ZERO);
-    _ball->setVisible(false);
-    _paddle->setVisible(false);
     scheduleOnce([&](float dt) {
         this->initLevel();
     }, 1, "won");
+}
+
+Node* GameScene::getContact(PhysicsBody *a, PhysicsBody *b, int tag)
+{
+    if (a->getNode()->getTag() == tag) {
+        return a->getNode();
+    }
+    if (b->getNode()->getTag() == tag) {
+        return b->getNode();
+    }
+    return nullptr;
 }
 
 bool GameScene::onContactBegin(PhysicsContact& contact)
@@ -272,13 +288,15 @@ bool GameScene::onContactBegin(PhysicsContact& contact)
     PhysicsBody* b = contact.getShapeB()->getBody();
     
     AudioEngine::play2d("1.mp3", false, 1.0f);
-    Ball* ball = static_cast<Ball*>( (a->getCategoryBitmask() == 0x01) ? a->getNode() : b->getNode() );
-    Arena* arena = static_cast<Arena*>( (a->getNode()->getTag() == ARENA_TAG) ? a->getNode() : b->getNode() );
-    Brick* brick = static_cast<Brick*>( (a->getNode()->getTag() == TAG_BRICK) ? a->getNode() : b->getNode() );
+    Ball* ball = static_cast<Ball*>(getContact(a, b, BALL_TAG) );
+    Arena* arena = static_cast<Arena*>(getContact(a, b, ARENA_TAG) );
+    Brick* brick = static_cast<Brick*>( getContact(a, b, TAG_BRICK) );
+    ExtraPower* power = static_cast<ExtraPower*>( getContact(a, b, POWERUP_TAG));
+    Paddle* paddle = static_cast<Paddle*>( getContact(a, b, PADDLE_TAG));
     
-    log("contact %s %s", itoa(a->getCategoryBitmask(), 2).c_str(), itoa(b->getCategoryBitmask(), 2).c_str());
+//    log("contact %s %s", itoa(a->getCategoryBitmask(), 2).c_str(), itoa(b->getCategoryBitmask(), 2).c_str());
     
-    if (ball->getTag() == BALL_TAG && arena->getTag() == ARENA_TAG ) {
+    if (ball != nullptr & arena != nullptr) {
 //        CCLOG("pos %f, %f  , vel %f, %f", ball->getPosition().x, ball->getPosition().y, ball->getPhysicsBody()->getVelocity().x, ball->getPhysicsBody()->getVelocity().y);
         // find if hit the bottom wall, by checing velocity y is negative and if the ball is lower than the paddle
         if (_ball->getPosition().y < _paddle->getPosition().y - _paddle->getContentSize().height
@@ -287,11 +305,22 @@ bool GameScene::onContactBegin(PhysicsContact& contact)
         }
     }
     
-    if (brick->getTag() == TAG_BRICK) {
+    if (power != nullptr)
+    {
+        if (arena != nullptr) {
+            power->die();
+        }
+        if (paddle != nullptr) {
+            power->caught();
+        }
+    }
+    
+    if (brick) {
         auto *data = static_cast<Brick::BrickData *>(brick->getUserData());
         if (data->hits > 0) {
-            data->hits--;
             brick->updateImage();
+            data->hits--;
+            brick->hit();
         } else {
             addToScore(data->value);
             brick->remove();
@@ -307,11 +336,16 @@ bool GameScene::onContactBegin(PhysicsContact& contact)
     return true;
 }
 
+int GameScene::getGainThreshold()
+{
+    return _gainLevelThreshold * 10000;
+}
+
 void GameScene::addToScore(int value)
 {
     _score += value;
-    if (_score > _gainLevelThreshold) {
-        _gainLevelThreshold += _gainLevelThreshold * 1.1;
+    if (_score > getGainThreshold()) {
+        _gainLevelThreshold++;
         AudioEngine::play2d("5.mp3", false, 1.0f);
         addLifeSprite(MAX(0, _lives - 1));
         _lives++;

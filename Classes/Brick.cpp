@@ -9,24 +9,24 @@
 
 USING_NS_CC;
 
-const std::vector<std::string> Brick::tiles({
-    "element_blue_rectangle_glossy",
-    "element_dark_blue_rectangle_glossy",
-    "element_green_rectangle_glossy",
-    "element_grey_rectangle_glossy",
-    "element_orange_rectangle_glossy",
-    "element_pink_rectangle_glossy",
-    "element_purple_rectangle_glossy",
-    "element_red_rectangle_glossy",
-    "element_white_rectangle_glossy",
-    "element_yellow_rectangle_glossy"
+const std::vector<Brick::BrickData> Brick::metadata({
+    {"element_blue_rectangle_glossy", 70, 0},
+    {"element_dark_blue_rectangle_glossy", 100, 0},
+    {"element_green_rectangle_glossy", 80, 0},
+    {"element_grey_rectangle_glossy", 50, 1},
+    {"element_yellow_rectangle_glossy", 0, 0x7fffffff},
+    {"element_pink_rectangle_glossy", 110, 0},
+    {"element_purple_rectangle_glossy", 120, 0},
+    {"element_red_rectangle_glossy", 90, 0},
+    {"element_white_rectangle_glossy", 50, 0},
+    {"element_orange_rectangle_glossy", 60, 0},
 });
 
 Brick* Brick::create(cocos2d::Vec2 pos, int value)
 {
     if (value < 0)
         return nullptr;
-    value %= Brick::tiles.size();
+    value %= Brick::metadata.size();
     Brick *pRet = new(std::nothrow) Brick();
     if (pRet && pRet->init(pos, value))
     {
@@ -39,6 +39,14 @@ Brick* Brick::create(cocos2d::Vec2 pos, int value)
         pRet = nullptr;
         return nullptr;
     }
+}
+
+void Brick::hit()
+{
+    auto seq = Sequence::create(ResizeTo::create(0.1, Size(12, 6)), ResizeTo::create(0.2, Size(64, 32)),
+                                ResizeTo::create(0, _size0), nullptr);
+    this->runAction(seq);
+
 }
 
 void Brick::remove()
@@ -54,28 +62,42 @@ void Brick::remove()
     getParent()->addChild(emitter);
     emitter->setTexture( Director::getInstance()->getTextureCache()->addImage("stars.png") );
 
-    auto seq = Sequence::create(ResizeBy::create(0.1, Size(32, 32)), ResizeTo::create(0.2, Size(32, 16)), CallFunc::create([&, emitter](){
+    auto seq = Sequence::create(ResizeTo::create(0.1, Size(12, 6)), ResizeTo::create(0.2, Size(96, 32)),
+                                CallFunc::create([&](){
         this->removeFromParentAndCleanup(true);
     }), nullptr);
     this->runAction(seq);
+    
+    auto rand = CCRANDOM_0_1();
+    if (rand > 0.3)
+    {
+        ExtraPower* powerUp;
+        if (rand > 0.5 and rand <= 0.7) {
+            powerUp = ExtraPower::createWithType('p');
+        }
+        if (rand > 0.7) {
+            powerUp = ExtraPower::createWithType('e');
+        } else {
+            powerUp = ExtraPower::createWithType('c');
+        }
+        powerUp->setPosition(getPosition());
+        getParent()->addChild(powerUp);
+    }
 }
 
 bool Brick::init(cocos2d::Vec2 pos, int value)
 {
-    value %= tiles.size();
-    initWithSpriteFrameName(tiles.at(value));
+    value %= metadata.size();
+    initWithSpriteFrameName(metadata.at(value).frame);
     setTag(TAG_BRICK);
     setPosition(Vec2(pos.x * _contentSize.width, pos.y * _contentSize.height));
     setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-    BrickData *data = new BrickData{value, 0};
-    if (value == 9) {
-        data->value = value * 10;
-        data->hits = 1;
-        data->frame = Brick::tiles[value];
-    }
+    BrickData *data = new BrickData();
+    data->value = metadata.at(value).value;
+    data->hits = metadata.at(value).hits;
     setUserData(data);
     
-    auto pb = PhysicsBody::createBox(_contentSize,  PhysicsMaterial(0.1f, 0.9995, 0.0f));
+    auto pb = PhysicsBody::createBox(_contentSize,  PhysicsMaterial(0.1f, 1.0f, 0.0f));
     pb->setDynamic(false);
     pb->setGravityEnable(false);
     pb->setCategoryBitmask(0x02);    // 0010
@@ -83,11 +105,13 @@ bool Brick::init(cocos2d::Vec2 pos, int value)
     pb->setCollisionBitmask(0x01);   // 0001
     addComponent(pb);
 
+    _size0 = getContentSize();
+    
     return true;
 }
 
 void Brick::updateImage()
 {
-    auto *data = static_cast<Brick::BrickData *>(getUserData());
-    this->setSpriteFrame(data->frame);
+//    auto *data = static_cast<Brick::BrickData *>(getUserData());
+//    this->setSpriteFrame(data->frame);
 }
