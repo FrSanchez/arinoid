@@ -11,9 +11,10 @@ USING_NS_CC;
 
 Arena::Arena() :
 numXTiles(12),
-numYTiles(14),
-tileSize(31)
+numYTiles(14)
 {
+    SpriteFrame *frame = SpriteFrameCache::getInstance()->getSpriteFrameByName("tile");
+    tileSize = frame->getOriginalSize().width;
 }
 
 Arena* Arena::create(int tileNum)
@@ -34,12 +35,14 @@ Arena* Arena::create(int tileNum)
 
 void Arena::setTile(int tileNum)
 {
-    tileNum %= 6;
+//    tileNum %= MAX_NUM_TILES;
+    auto color = Color3B(random(0, 255), random(0, 255), random(0, 255));
     auto children = getChildren();
     for (auto iter : children){
         Sprite* sprite = dynamic_cast<Sprite *>(iter);
-        if (sprite->getTag() == 0x11) {
-            sprite->setSpriteFrame(tiles[tileNum]);
+        if (sprite && sprite->getTag() == 0x11) {
+            sprite->setColor(color);
+//            sprite->setSpriteFrame(tiles[tileNum]);
         }
     }
 }
@@ -61,16 +64,16 @@ Arena::~Arena()
 
 void Arena::makeBackground(int tilenum)
 {
-    for (int x = 0; x < 14; x++) {
-        auto border = drawTile(borderNames[bordertop[x]], x, numYTiles);
-    }
-    for (int y = 0; y < 14; y++) {
-        auto border = drawTile(borderNames[borderleft[y]], 0, y);
-        border = drawTile(borderNames[borderright[y]], numXTiles + 1, y);
-    }
+//    for (int x = 0; x < 14; x++) {
+//        auto border = drawTile(borderNames[bordertop[x]], x, numYTiles);
+//    }
+//    for (int y = 0; y < 14; y++) {
+//        auto border = drawTile(borderNames[borderleft[y]], 0, y);
+//        border = drawTile(borderNames[borderright[y]], numXTiles + 1, y);
+//    }
     for(int x = 0; x < numXTiles; x++) {
         for (int y = 0; y < numYTiles; y++) {
-            auto tile = drawTile(tiles[tilenum], x + 1, y );
+            auto tile = drawTile("", x + 1, y );
             tile->setTag(0x11);
         }
     }
@@ -87,7 +90,7 @@ void Arena::makeBackground(int tilenum)
 
 Sprite* Arena::drawTile(std::string frameName, int x, int y)
 {
-    auto sprite = Sprite::createWithSpriteFrameName(frameName);
+    auto sprite = Sprite::createWithSpriteFrameName("tile");
     sprite->setPosition(Vec2(x * tileSize, tileSize * y));
     sprite->setAnchorPoint(Vec2::ANCHOR_MIDDLE_BOTTOM);
     addChild(sprite);

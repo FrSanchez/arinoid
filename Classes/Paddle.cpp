@@ -15,7 +15,8 @@ bool Paddle::init()
         return false;
     }
     
-    initWithSpriteFrameName("paddle");
+    _active = false;
+    initWithSpriteFrameName("paddleRed");
     setPaddleImage(paddleImages::NORMAL);
     setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     
@@ -46,44 +47,71 @@ bool Paddle::init()
         return false;
     };
     
-    listener1->onTouchMoved = [](Touch* touch, Event* event){
+    listener1->onTouchMoved = [=](Touch* touch, Event* event){
         auto target = static_cast<Sprite*>(event->getCurrentTarget());
         auto newPos = target->getPosition() + touch->getDelta();
-        if (newPos.x > 31 && newPos.x < 372) {
+        if (newPos.x > minX && newPos.x < maxX) {
             target->setPosition(newPos.x, target->getPosition().y);
         }
     };
     
     listener1->onTouchEnded = [=](Touch* touch, Event* event){
         auto target = static_cast<Sprite*>(event->getCurrentTarget());
-
-//        target->setOpacity(255);
     };
     
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, this);
     return true;
 }
 
+void Paddle::setArenaWidth(float width)
+{
+    minX = getContentSize().width / 2;
+    maxX = width - getContentSize().width / 2 ;
+}
+
 void Paddle::die(std::function<void(void)> callback)
 {
-    Vector<SpriteFrame*> animFrames(3);
-    auto frameCache = SpriteFrameCache::getInstance();
-    animFrames.pushBack( frameCache->getSpriteFrameByName("paddle3"));
-    animFrames.pushBack( frameCache->getSpriteFrameByName("paddle2"));
-    animFrames.pushBack( frameCache->getSpriteFrameByName("paddle1"));
-    auto animation = Animation::createWithSpriteFrames(animFrames, 0.15f);
-    auto seq = Sequence::create(Animate::create(animation), CallFunc::create([&, callback](){
-        this->setVisible(false);
-        if (callback != nullptr)
-        {
+//    Vector<SpriteFrame*> animFrames(3);
+//    auto frameCache = SpriteFrameCache::getInstance();
+//    animFrames.pushBack( frameCache->getSpriteFrameByName("paddle3"));
+//    animFrames.pushBack( frameCache->getSpriteFrameByName("paddle2"));
+//    animFrames.pushBack( frameCache->getSpriteFrameByName("paddle1"));
+//    auto animation = Animation::createWithSpriteFrames(animFrames, 0.15f);
+//    auto seq = Sequence::create(Animate::create(animation), CallFunc::create([&, callback](){
+//        this->setVisible(false);
+//        if (callback != nullptr)
+//        {
+//            callback();
+//        }
+//    }), nullptr);
+//    runAction(seq);
+    
+    scheduleOnce([&, callback](float dt) {
+        if (callback) {
             callback();
         }
-    }), nullptr);
-    runAction(seq);
+    }, 1, "died");
+    _active = false;
+    
+    auto seq = Sequence::create(ResizeTo::create(0.1, Size(64, 32)),
+                                Spawn::createWithTwoActions(
+                                ResizeTo::create(0.2, Size(100, 25)), CallFunc::create([&](){
+        auto _emitter = ParticleExplosion::create();
+        _emitter->retain();
+        _emitter->setSpeed(200);
+        _emitter->setPosition(getPosition());
+        getParent()->addChild(_emitter);
+        _emitter->setTexture( Director::getInstance()->getTextureCache()->addImage("stars.png") );
+        _emitter->setAutoRemoveOnFinish(true);
+        _emitter->setDuration(0.5);
+        setVisible(false);
+    })), nullptr);
+    this->runAction(seq);
 }
 
 void Paddle::start()
 {
+    _active = true;
     setVisible(true);
     this->setSpriteFrame(_currentFrame);
 }

@@ -14,7 +14,10 @@
 
 class Ball : public cocos2d::Sprite
 {
+    cocos2d::Vec2 _velocity;
 public:
+    void pause();
+    void unPause();
     virtual bool init();
     CREATE_FUNC(Ball);
 };

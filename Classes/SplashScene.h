@@ -9,11 +9,17 @@
 #define SplashScene_hpp
 
 #include "cocos2d.h"
+#include "extensions/cocos-ext.h"
+#include "ui/CocosGUI.h"
+
 #include "GameScene.h"
 #include "PowerUp.h"
 
 class SplashScene : public cocos2d::Scene
 {
+private:
+    void doProgress(float dt);
+    cocos2d::Node* createSpinnyNode(cocos2d::Vec2 pos, cocos2d::Color4F color);
 public:
     static cocos2d::Scene* createScene();
 

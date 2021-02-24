@@ -9,8 +9,24 @@
 
 USING_NS_CC;
 
+const std::vector<std::string> Brick::tiles({
+    "element_blue_rectangle_glossy",
+    "element_dark_blue_rectangle_glossy",
+    "element_green_rectangle_glossy",
+    "element_grey_rectangle_glossy",
+    "element_orange_rectangle_glossy",
+    "element_pink_rectangle_glossy",
+    "element_purple_rectangle_glossy",
+    "element_red_rectangle_glossy",
+    "element_white_rectangle_glossy",
+    "element_yellow_rectangle_glossy"
+});
+
 Brick* Brick::create(cocos2d::Vec2 pos, int value)
 {
+    if (value < 0)
+        return nullptr;
+    value %= Brick::tiles.size();
     Brick *pRet = new(std::nothrow) Brick();
     if (pRet && pRet->init(pos, value))
     {
@@ -25,9 +41,29 @@ Brick* Brick::create(cocos2d::Vec2 pos, int value)
     }
 }
 
+void Brick::remove()
+{
+    auto pb = getPhysicsBody();
+    removeComponent(pb);
+    auto emitter = ParticleFlower::create();
+    emitter->retain();
+    emitter->isAutoRemoveOnFinish();
+    emitter->setSpeed(200);
+    emitter->setPosition(getPosition());
+    emitter->setDuration(0.5);
+    getParent()->addChild(emitter);
+    emitter->setTexture( Director::getInstance()->getTextureCache()->addImage("stars.png") );
+
+    auto seq = Sequence::create(ResizeBy::create(0.1, Size(32, 32)), ResizeTo::create(0.2, Size(32, 16)), CallFunc::create([&, emitter](){
+        this->removeFromParentAndCleanup(true);
+    }), nullptr);
+    this->runAction(seq);
+}
+
 bool Brick::init(cocos2d::Vec2 pos, int value)
 {
-    initWithSpriteFrameName(Brick::tiles[value-1]);
+    value %= tiles.size();
+    initWithSpriteFrameName(tiles.at(value));
     setTag(TAG_BRICK);
     setPosition(Vec2(pos.x * _contentSize.width, pos.y * _contentSize.height));
     setAnchorPoint(Vec2::ANCHOR_MIDDLE);

@@ -11,7 +11,7 @@ USING_NS_CC;
 
 bool Ball::init()
 {
-    initWithSpriteFrameName("ball");
+    initWithSpriteFrameName("ballGrey");
     setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     setTag(BALL_TAG);
     
@@ -23,6 +23,17 @@ bool Ball::init()
     pb->setCollisionBitmask(0x0f);
 
     addComponent(pb);
-    
+        
     return true;
+}
+
+void Ball::pause()
+{
+    _velocity = getPhysicsBody()->getVelocity();
+    getPhysicsBody()->setVelocity(Vec2::ZERO);
+}
+
+void Ball::unPause()
+{
+    getPhysicsBody()->setVelocity(_velocity);
 }

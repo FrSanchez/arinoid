@@ -11,7 +11,7 @@
 #include "cocos2d.h"
 
 #define ARENA_TAG 0x2f
-
+#define MAX_NUM_TILES 7
 class Arena : public cocos2d::Node
 {
 private:
@@ -33,7 +33,7 @@ public:
         "leftSpecialBorder", "rightSpecialBorder",
         "plainBorder", "specialBorder", "upperLeftBorder", "upperRightBorder" };
     
-    constexpr static const char * const tiles[6] = {"purpleTile", "darkBlueTile", "redTile", "greenTile",  "blueTile", "darkPurple"};
+    constexpr static const char * const tiles[MAX_NUM_TILES] = { "greenSquaresTile", "purpleTile", "darkBlueTile", "redTile", "greenTile",  "blueTile", "darkPurple"};
     
     constexpr static const int bordertop[] = {6, 4, 4, 4, 5, 4, 4, 4, 4, 5, 4, 4, 4, 7};
     constexpr static const int borderleft[] = {0, 0, 2, 0, 0, 2, 0, 0, 2, 0, 0, 2, 0, 0};
