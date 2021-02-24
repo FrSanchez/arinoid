@@ -219,10 +219,14 @@
                 <false/>
             </struct>
             <key type="filename">element_blue_rectangle_glossy.png</key>
+            <key type="filename">element_dark_blue_rectangle_glossy.png</key>
             <key type="filename">element_green_rectangle_glossy.png</key>
             <key type="filename">element_grey_rectangle_glossy.png</key>
+            <key type="filename">element_orange_rectangle_glossy.png</key>
+            <key type="filename">element_pink_rectangle_glossy.png</key>
             <key type="filename">element_purple_rectangle_glossy.png</key>
             <key type="filename">element_red_rectangle_glossy.png</key>
+            <key type="filename">element_white_rectangle_glossy.png</key>
             <key type="filename">element_yellow_rectangle_glossy.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -366,6 +370,10 @@
             <filename>ballGrey.png</filename>
             <filename>paddleBlu.png</filename>
             <filename>paddleRed.png</filename>
+            <filename>element_orange_rectangle_glossy.png</filename>
+            <filename>element_pink_rectangle_glossy.png</filename>
+            <filename>element_dark_blue_rectangle_glossy.png</filename>
+            <filename>element_white_rectangle_glossy.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

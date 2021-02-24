@@ -78,6 +78,7 @@ void SplashScene::doProgress(float dt)
     // first cache sounds
     LoadingBar* loadingBar = static_cast<LoadingBar*>(getChildByTag(1));
         
+    AudioEngine::preload("loop.mp3");
     
     auto size = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();

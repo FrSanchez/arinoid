@@ -153,6 +153,7 @@ Sprite* GameScene::addLifeSprite(int pos)
 
 void GameScene::endScene(float dt)
 {
+    AudioEngine::stopAll();
     auto scene = SplashScene::create();
     auto fade = TransitionProgressOutIn::create(1, scene);
     Director::getInstance()->replaceScene(fade);
@@ -197,11 +198,14 @@ void GameScene::initRound()
         }
         _paddle->start();
         _ball->setVisible(true);
+        // melodyloops-preview-your-optimistic-future-2m30s.mp3
+        AudioEngine::play2d("loop.mp3", true, 0.5f);
     }, 2, "start");
 }
 
 void GameScene::die()
 {
+    AudioEngine::stopAll();
     AudioEngine::play2d("10.mp3", false, 1.0f);
     _ball->setPosition(128, 128);
     _ball->getPhysicsBody()->setVelocity(Vec2::ZERO);
@@ -234,7 +238,7 @@ void GameScene::makeLevel(Arena* arena, int level)
     for (int y = 0; y < 24; y++) {
         for(int x = 0; x < 12; x++) {
             if (levels[level][y][x] > 0) {
-                auto brick = Brick::create(Vec2(x + 1, y + 4), levels[level][y][x]);
+                auto brick = Brick::create(Vec2(x + 1, y + 4), levels[level][y][x] - 1);
                 if (brick) {
                     arena->addChild(brick);
                     _brickCount++;
@@ -246,6 +250,7 @@ void GameScene::makeLevel(Arena* arena, int level)
 
 void GameScene::winLevel()
 {
+    AudioEngine::stopAll();
     _level++;
     if (_level > maxLevel) {
         endScene(0);

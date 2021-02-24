@@ -9,29 +9,24 @@
 
 USING_NS_CC;
 
-const cocos2d::Color3B Brick::colors[] = {
-    {251, 241, 55}, // yellow
-    {156, 219, 87}, // green
-    {190, 59, 56}, // "redBrick",
-    {248, 155, 249}, // "pink",
-    {120, 54, 170}, //        "purpleBrick",
-    {250, 140, 43}, //"orangeBrick",
-    {56, 188, 253}, //"lightBlueBrick",
-    {60, 120, 193}, // "darkBlueBrick",
-    {190, 190, 190}, //"lightGrayBrick",
-    {75, 75, 75}, //"darkGrayBrick"
-};
-
 const std::vector<std::string> Brick::tiles({
     "element_blue_rectangle_glossy",
-    "element_grey_rectangle_glossy",
-    "element_red_rectangle_glossy",
+    "element_dark_blue_rectangle_glossy",
     "element_green_rectangle_glossy",
+    "element_grey_rectangle_glossy",
+    "element_orange_rectangle_glossy",
+    "element_pink_rectangle_glossy",
     "element_purple_rectangle_glossy",
-    "element_yellow_rectangle_glossy"});
+    "element_red_rectangle_glossy",
+    "element_white_rectangle_glossy",
+    "element_yellow_rectangle_glossy"
+});
 
 Brick* Brick::create(cocos2d::Vec2 pos, int value)
 {
+    if (value < 0)
+        return nullptr;
+    value %= Brick::tiles.size();
     Brick *pRet = new(std::nothrow) Brick();
     if (pRet && pRet->init(pos, value))
     {

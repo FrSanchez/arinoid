@@ -31,8 +31,6 @@ public:
 //    };
 //    static const std::string tiles[];
     const static std::vector<std::string> tiles;
-    
-    static const cocos2d::Color3B colors[];
 
 };
 
