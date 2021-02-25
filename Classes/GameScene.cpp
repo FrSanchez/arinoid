@@ -296,12 +296,18 @@ bool GameScene::onContactBegin(PhysicsContact& contact)
     
 //    log("contact %s %s", itoa(a->getCategoryBitmask(), 2).c_str(), itoa(b->getCategoryBitmask(), 2).c_str());
     
-    if (ball != nullptr & arena != nullptr) {
+//    if (ball != nullptr & arena != nullptr) {
+    if (ball) {
+        if (arena) {
 //        CCLOG("pos %f, %f  , vel %f, %f", ball->getPosition().x, ball->getPosition().y, ball->getPhysicsBody()->getVelocity().x, ball->getPhysicsBody()->getVelocity().y);
         // find if hit the bottom wall, by checing velocity y is negative and if the ball is lower than the paddle
-        if (_ball->getPosition().y < _paddle->getPosition().y - _paddle->getContentSize().height
-            && _ball->getPhysicsBody()->getVelocity().y < 0) {
-            die();
+            if (_ball->getPosition().y < _paddle->getPosition().y - _paddle->getContentSize().height
+                && _ball->getPhysicsBody()->getVelocity().y < 0) {
+                die();
+            }
+        }
+        if (paddle) {
+            paddle->hitBall(ball);
         }
     }
     

@@ -66,6 +66,10 @@ void Paddle::addPhysicsBody()
     addComponent(pb);
 }
 
+void Paddle::hitBall(Ball* ball)
+{
+    
+}
 
 bool Paddle::init()
 {

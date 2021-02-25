@@ -38,7 +38,7 @@ private:
     int _brickCount;
     bool _debugDraw = false;
     int _gainLevelThreshold;
-
+    cocos2d::Vector<Ball*> _balls;
     cocos2d::Vector<cocos2d::Sprite*> _livesSprites;
 
     void tick(float dt);

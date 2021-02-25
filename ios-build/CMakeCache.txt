@@ -15,13 +15,13 @@
 ########################
 
 //Path to a library.
-AUDIOTOOLBOX_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/AudioToolbox.framework
+AUDIOTOOLBOX_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/AudioToolbox.framework
 
 //Path to a library.
-AVKIT_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/AVKit.framework
+AVKIT_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/AVKit.framework
 
 //Path to a library.
-AV_FOUNDATION_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/AVFoundation.framework
+AV_FOUNDATION_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/AVFoundation.framework
 
 //Value Computed by CMake
 Arinoid_BINARY_DIR:STATIC=/Users/francisco.sanchez/Development/games/arinoid/ios-build
@@ -148,6 +148,9 @@ CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 //Path to a program.
 CMAKE_DLLTOOL:FILEPATH=CMAKE_DLLTOOL-NOTFOUND
 
+//Executable file format
+CMAKE_EXECUTABLE_FORMAT:STRING=MACHO
+
 //Flags used by the linker during all build types.
 CMAKE_EXE_LINKER_FLAGS:STRING=
 
@@ -206,7 +209,7 @@ CMAKE_OSX_ARCHITECTURES:STRING=
 
 //The product will be built against the headers and libraries located
 // inside the indicated SDK.
-CMAKE_OSX_SYSROOT:STRING=iphonesimulator
+CMAKE_OSX_SYSROOT:STRING=iphoneos
 
 //Value Computed by CMake
 CMAKE_PROJECT_DESCRIPTION:STATIC=
@@ -286,52 +289,46 @@ CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 COCOS_COMMAND:FILEPATH=/Users/francisco.sanchez/Development/cocos2d-x-4.0/tools/cocos2d-console/bin/cocos
 
 //Path to a library.
-CORE_GRAPHICS_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/CoreGraphics.framework
+CORE_GRAPHICS_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/CoreGraphics.framework
 
 //Path to a library.
-CORE_MEDIA_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/CoreMedia.framework
+CORE_MEDIA_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/CoreMedia.framework
 
 //Path to a library.
-CORE_MOTION_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/CoreMotion.framework
+CORE_MOTION_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/CoreMotion.framework
 
 //Path to a library.
-CORE_TEXT_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/CoreText.framework
+CORE_TEXT_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/CoreText.framework
 
 //Path to a library.
-FOUNDATION_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/Foundation.framework
+FOUNDATION_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/Foundation.framework
 
 //Path to a library.
-GAMECONTROLLER_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/GameController.framework
+GAMECONTROLLER_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/GameController.framework
 
 //Path to a library.
-METAL_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/Metal.framework
+METAL_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/Metal.framework
 
 //Path to a library.
-OPENAL_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/OpenAL.framework
+OPENAL_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/OpenAL.framework
 
 //Path to a library.
-OPENGLES_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/OpenGLES.framework
+OPENGLES_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/OpenGLES.framework
 
 //Path to a program.
 PYTHON_COMMAND:FILEPATH=/usr/bin/python2
 
 //Path to a library.
-QUARTZCORE_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/QuartzCore.framework
+QUARTZCORE_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/QuartzCore.framework
 
 //Path to a library.
-SECURITY_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/Security.framework
+SECURITY_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/Security.framework
 
 //Path to a library.
-UIKIT_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/UIKit.framework
+UIKIT_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/UIKit.framework
 
 //Path to a library.
-WEBKIT_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/WebKit.framework
-
-//Value Computed by CMake
-arinoid_BINARY_DIR:STATIC=/Users/francisco.sanchez/Development/games/arinoid/ios-build
-
-//Value Computed by CMake
-arinoid_SOURCE_DIR:STATIC=/Users/francisco.sanchez/Development/games/arinoid
+WEBKIT_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/WebKit.framework
 
 //Value Computed by CMake
 box2d_BINARY_DIR:STATIC=/Users/francisco.sanchez/Development/games/arinoid/ios-build/engine/external/Box2D
@@ -358,7 +355,7 @@ clipper_BINARY_DIR:STATIC=/Users/francisco.sanchez/Development/games/arinoid/ios
 clipper_SOURCE_DIR:STATIC=/Users/francisco.sanchez/Development/games/arinoid/cocos2d/external/clipper
 
 //Dependencies for the target
-cocos2d_LIB_DEPENDS:STATIC=general;external;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/UIKit.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/OpenGLES.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/CoreMotion.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/AVKit.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/CoreMedia.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/CoreText.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/Security.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/CoreGraphics.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/AVFoundation.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/WebKit.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/OpenAL.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/AudioToolbox.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/QuartzCore.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/Foundation.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/GameController.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.4.sdk/System/Library/Frameworks/Metal.framework;general;/usr/lib/libz.dylib;general;/usr/lib/libiconv.dylib;
+cocos2d_LIB_DEPENDS:STATIC=general;external;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/UIKit.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/OpenGLES.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/CoreMotion.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/AVKit.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/CoreMedia.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/CoreText.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/Security.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/CoreGraphics.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/AVFoundation.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/WebKit.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/OpenAL.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/AudioToolbox.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/QuartzCore.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/Foundation.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/GameController.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/Metal.framework;general;/usr/lib/libz.dylib;general;/usr/lib/libiconv.dylib;
 
 //Value Computed by CMake
 cocos2d_libs_BINARY_DIR:STATIC=/Users/francisco.sanchez/Development/games/arinoid/ios-build/engine/cocos/core
@@ -489,9 +486,9 @@ xxtea_SOURCE_DIR:STATIC=/Users/francisco.sanchez/Development/games/arinoid/cocos
 ########################
 
 //Stored Xcode object GUID
-ALL_BUILD_GUID_CMAKE:INTERNAL=4B402F425A2C4A8FBF784B12
+ALL_BUILD_GUID_CMAKE:INTERNAL=802246B39B044414876333C2
 //Stored Xcode object GUID
-Arinoid_GUID_CMAKE:INTERNAL=315BE57C3CDB4614A3A0E378
+Arinoid_GUID_CMAKE:INTERNAL=FA2DA222923744BA97E47544
 //ADVANCED property for variable: CMAKE_ADDR2LINE
 CMAKE_ADDR2LINE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
@@ -532,8 +529,6 @@ CMAKE_C_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 CMAKE_C_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_DLLTOOL
 CMAKE_DLLTOOL-ADVANCED:INTERNAL=1
-//Executable file format
-CMAKE_EXECUTABLE_FORMAT:INTERNAL=Unknown
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS
 CMAKE_EXE_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_DEBUG
@@ -618,83 +613,79 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Stored Xcode object GUID
-PROJECT_Arinoid_GUID_CMAKE:INTERNAL=D7A8D9F8C45B4454A28C4BE4
+PROJECT_Arinoid_GUID_CMAKE:INTERNAL=6E1CE442882F4731B747ACF9
 //Stored Xcode object GUID
-PROJECT_arinoid_GUID_CMAKE:INTERNAL=8B2434BAD6E548D28EDDAC98
+PROJECT_box2d_GUID_CMAKE:INTERNAL=79FE14EF3F034AA499853F5A
 //Stored Xcode object GUID
-PROJECT_box2d_GUID_CMAKE:INTERNAL=6C11F27760B64750BC44062C
+PROJECT_bullet_GUID_CMAKE:INTERNAL=BDBF9B03BC964C49AD60A5B2
 //Stored Xcode object GUID
-PROJECT_bullet_GUID_CMAKE:INTERNAL=BEE83F3845F34B55BE95A2C3
+PROJECT_chipmunk_GUID_CMAKE:INTERNAL=556B52FC167F4930B0FBC523
 //Stored Xcode object GUID
-PROJECT_chipmunk_GUID_CMAKE:INTERNAL=9E4F990F1FA641DD9417D952
+PROJECT_clipper_GUID_CMAKE:INTERNAL=438183D7B0E145A193B33AA4
 //Stored Xcode object GUID
-PROJECT_clipper_GUID_CMAKE:INTERNAL=19E05693CEC249489517EFA1
+PROJECT_cocos2d_libs_GUID_CMAKE:INTERNAL=F3E4804823D34E58970DA44A
 //Stored Xcode object GUID
-PROJECT_cocos2d_libs_GUID_CMAKE:INTERNAL=31443FC482394627AB3728D2
+PROJECT_convertUTF_GUID_CMAKE:INTERNAL=07255A925B7C4A78B8F7A0EB
 //Stored Xcode object GUID
-PROJECT_convertUTF_GUID_CMAKE:INTERNAL=A4464F3C063E47F78EE0FC9B
+PROJECT_curl_GUID_CMAKE:INTERNAL=802CE21D77514494BF99AB82
 //Stored Xcode object GUID
-PROJECT_curl_GUID_CMAKE:INTERNAL=6B5721426F9F44A384F607A5
+PROJECT_edtaa3func_GUID_CMAKE:INTERNAL=347BC885C5F64877AED2317A
 //Stored Xcode object GUID
-PROJECT_edtaa3func_GUID_CMAKE:INTERNAL=C29270F77E334FD59F8EAF66
+PROJECT_external_GUID_CMAKE:INTERNAL=7437ECA92B1241D49C57F4DF
 //Stored Xcode object GUID
-PROJECT_external_GUID_CMAKE:INTERNAL=B55FBA4ED17E49B594CD6B6D
+PROJECT_freetype_GUID_CMAKE:INTERNAL=2C04D56837DA4F4CB7586637
 //Stored Xcode object GUID
-PROJECT_freetype_GUID_CMAKE:INTERNAL=EF548D5C9DCF42269054CCC1
+PROJECT_glsl_optimizer_GUID_CMAKE:INTERNAL=3C32CB9502B34DADA906244D
 //Stored Xcode object GUID
-PROJECT_glsl_optimizer_GUID_CMAKE:INTERNAL=D86AEB0C77664D0CAAA78396
+PROJECT_jpeg_GUID_CMAKE:INTERNAL=1DD4CFAB70814146975FAE58
 //Stored Xcode object GUID
-PROJECT_jpeg_GUID_CMAKE:INTERNAL=7F1A689E3BCD4B09B784653A
+PROJECT_md5_GUID_CMAKE:INTERNAL=45B10EFC54AE4D0DAB64461F
 //Stored Xcode object GUID
-PROJECT_md5_GUID_CMAKE:INTERNAL=AE30C7FEC1664A3294D2061C
+PROJECT_openssl_GUID_CMAKE:INTERNAL=0C5471DDD75B4A119B53EC6C
 //Stored Xcode object GUID
-PROJECT_openssl_GUID_CMAKE:INTERNAL=1A839CDB356A446FAF3DBF0C
+PROJECT_png_GUID_CMAKE:INTERNAL=A748769B47374478A086A22C
 //Stored Xcode object GUID
-PROJECT_png_GUID_CMAKE:INTERNAL=5B199F5BC4A54DCBB439310B
+PROJECT_poly2tri_GUID_CMAKE:INTERNAL=F216E1D0523F46C08919132C
 //Stored Xcode object GUID
-PROJECT_poly2tri_GUID_CMAKE:INTERNAL=BEB25EEFEA104FABA0B9730B
+PROJECT_recast_GUID_CMAKE:INTERNAL=EC14091EFC1F494498AC47A5
 //Stored Xcode object GUID
-PROJECT_recast_GUID_CMAKE:INTERNAL=C13D982F5BB946A8BE0359CB
+PROJECT_tinyxml2_GUID_CMAKE:INTERNAL=A67A563CA1C84386853EAD8B
 //Stored Xcode object GUID
-PROJECT_tinyxml2_GUID_CMAKE:INTERNAL=00C01221FC0E4472A1977F83
+PROJECT_unzip_GUID_CMAKE:INTERNAL=1DBF0A059EE14961A6047E2E
 //Stored Xcode object GUID
-PROJECT_unzip_GUID_CMAKE:INTERNAL=3AAFD80F7D5343A583399D32
+PROJECT_uv_GUID_CMAKE:INTERNAL=D8CBD41EC1854C2DB605F961
 //Stored Xcode object GUID
-PROJECT_uv_GUID_CMAKE:INTERNAL=FF8F0B3487BD488A9ACF4831
+PROJECT_webp_GUID_CMAKE:INTERNAL=4774E92CDF20466AA0CFEC20
 //Stored Xcode object GUID
-PROJECT_webp_GUID_CMAKE:INTERNAL=97FD1B112A56481C9BE6CCD3
+PROJECT_websockets_GUID_CMAKE:INTERNAL=628CBAB43A464B2694240B30
 //Stored Xcode object GUID
-PROJECT_websockets_GUID_CMAKE:INTERNAL=304DC40B74404C1B9FF1D8E6
+PROJECT_xxhash_GUID_CMAKE:INTERNAL=858D84D972F94DC08FE2F70B
 //Stored Xcode object GUID
-PROJECT_xxhash_GUID_CMAKE:INTERNAL=2808B8DBB46B4594A56A6DB2
+PROJECT_xxtea_GUID_CMAKE:INTERNAL=71E692F49D34471F90529828
 //Stored Xcode object GUID
-PROJECT_xxtea_GUID_CMAKE:INTERNAL=1A3B4698A7274774BEE7CAFE
+ZERO_CHECK_GUID_CMAKE:INTERNAL=710ACCF4394449F8AFD26617
 //Stored Xcode object GUID
-ZERO_CHECK_GUID_CMAKE:INTERNAL=1EB98105D12D4D3DB80BF2E4
+cocos2d_GUID_CMAKE:INTERNAL=EB2809A7740448A09F4C1A12
 //Stored Xcode object GUID
-arinoid_GUID_CMAKE:INTERNAL=6824EDAB6DC647F296EE14B1
+ext_clipper_GUID_CMAKE:INTERNAL=028C9A08BA264AA8815A6F99
 //Stored Xcode object GUID
-cocos2d_GUID_CMAKE:INTERNAL=F8D317D8DBE44D04A881D833
+ext_convertUTF_GUID_CMAKE:INTERNAL=49D4F02E50A34F918B00B2E6
 //Stored Xcode object GUID
-ext_clipper_GUID_CMAKE:INTERNAL=4E94CBC460FB4F1DB67C7972
+ext_edtaa3func_GUID_CMAKE:INTERNAL=6CFD9FCB86624163BD85B428
 //Stored Xcode object GUID
-ext_convertUTF_GUID_CMAKE:INTERNAL=90FFC73662C547838D9560B5
+ext_md5_GUID_CMAKE:INTERNAL=18067A5BE9B14AFAB79A5480
 //Stored Xcode object GUID
-ext_edtaa3func_GUID_CMAKE:INTERNAL=1DE43F402E1F4B9E81CDFDF1
+ext_poly2tri_GUID_CMAKE:INTERNAL=B7CF32B421ED4147B7FC4F90
 //Stored Xcode object GUID
-ext_md5_GUID_CMAKE:INTERNAL=C7FA3CD4E9A5484FA6EE6D1B
+ext_recast_GUID_CMAKE:INTERNAL=8AC8D620B4CA4EA5810EA6CD
 //Stored Xcode object GUID
-ext_poly2tri_GUID_CMAKE:INTERNAL=DF7F5E77B36443A98664788C
+ext_tinyxml2_GUID_CMAKE:INTERNAL=229A5E123C1E47C9BEC0B400
 //Stored Xcode object GUID
-ext_recast_GUID_CMAKE:INTERNAL=579DDF4A8C224C75895FDBE3
+ext_unzip_GUID_CMAKE:INTERNAL=737CEF1B659D445393FE9081
 //Stored Xcode object GUID
-ext_tinyxml2_GUID_CMAKE:INTERNAL=01E9AE7D56AA4A549067649F
+ext_xxhash_GUID_CMAKE:INTERNAL=92DBF238CC814AEFB2EF36B3
 //Stored Xcode object GUID
-ext_unzip_GUID_CMAKE:INTERNAL=9936BC955DB443D0B60F8BE0
+ext_xxtea_GUID_CMAKE:INTERNAL=AF9644AFCC3A4854A69DD797
 //Stored Xcode object GUID
-ext_xxhash_GUID_CMAKE:INTERNAL=FCAA2B8BB01B4E6AB359C0CB
-//Stored Xcode object GUID
-ext_xxtea_GUID_CMAKE:INTERNAL=EE86D48B93264D60909763E9
-//Stored Xcode object GUID
-external_GUID_CMAKE:INTERNAL=4177D44B5B9747C8BBC164E1
+external_GUID_CMAKE:INTERNAL=697FA57755394BB5A1780DA4
 

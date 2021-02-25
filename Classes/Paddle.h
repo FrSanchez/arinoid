@@ -9,6 +9,7 @@
 #define Paddle_hpp
 
 #include "cocos2d.h"
+#include "Ball.h"
 
 #define PADDLE_TAG 0xa1
 
@@ -37,6 +38,7 @@ public:
     void powerUpGrow();
     void powerUpShrink();
     void powerUpEnd();
+    void hitBall(Ball* ball);
     CREATE_FUNC(Paddle);
 
     constexpr static const char * const tiles[4] = { "paddleRed", "paddleBlue", "paddleRed", "paddleRed" };

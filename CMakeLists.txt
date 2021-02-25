@@ -64,6 +64,7 @@ list(APPEND GAME_SOURCE
      Classes/Brick.cpp	
      Classes/Paddle.cpp	
      Classes/SplashScene.cpp
+     Classes/ExtraPower.cpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
@@ -74,6 +75,7 @@ list(APPEND GAME_HEADER
      Classes/Brick.h		
      Classes/Paddle.h	
      Classes/SplashScene.h
+     Classes/ExtraPower.h
      )
 
 if(ANDROID)

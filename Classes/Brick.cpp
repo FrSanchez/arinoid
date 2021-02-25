@@ -71,6 +71,7 @@ void Brick::remove()
     auto rand = CCRANDOM_0_1();
     if (rand > 0.3)
     {
+        log("Extra Power created: %f", rand);
         ExtraPower* powerUp;
         if (rand > 0.5 and rand <= 0.7) {
             powerUp = ExtraPower::createWithType('p');
