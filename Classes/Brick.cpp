@@ -75,11 +75,12 @@ void Brick::remove()
         ExtraPower* powerUp;
         if (rand > 0.5 and rand <= 0.7) {
             powerUp = ExtraPower::createWithType('p');
-        }
-        if (rand > 0.7) {
-            powerUp = ExtraPower::createWithType('e');
         } else {
-            powerUp = ExtraPower::createWithType('c');
+            if (rand > 0.7) {
+                powerUp = ExtraPower::createWithType('e');
+            } else {
+                powerUp = ExtraPower::createWithType('c');
+            }
         }
         powerUp->setPosition(getPosition());
         getParent()->addChild(powerUp);

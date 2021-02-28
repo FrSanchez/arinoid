@@ -78,7 +78,7 @@ void Arena::makeBackground(int tilenum)
         }
     }
     
-    auto pb = PhysicsBody::createEdgeBox(Size(numXTiles * tileSize, numYTiles * tileSize), PhysicsMaterial(0.1f, 1, 0.0f));
+    auto pb = PhysicsBody::createEdgeBox(Size(numXTiles * tileSize + 4, (numYTiles + 1) * tileSize), PhysicsMaterial(0.1, 1, 0.1), 2, Vec2(0, -tileSize / 2));
     pb->setPositionOffset(Vec2((1 + numXTiles) * tileSize / 2 , ( numYTiles) * tileSize / 2 ));
     pb->setGravityEnable(false);
     pb->setCategoryBitmask(0x08);    // 1000
@@ -86,6 +86,8 @@ void Arena::makeBackground(int tilenum)
     pb->setCollisionBitmask(0x11);   // 0001
     pb->setDynamic(false);
     addComponent(pb);
+    
+    _arenaRect = Rect(0, 0, numXTiles * tileSize, numYTiles * tileSize);
 }
 
 Sprite* Arena::drawTile(std::string frameName, int x, int y)

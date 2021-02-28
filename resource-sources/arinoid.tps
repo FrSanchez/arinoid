@@ -304,6 +304,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">powerup-c.png</key>
             <key type="filename">powerup-e.png</key>
             <key type="filename">powerup-p.png</key>
             <struct type="IndividualSpriteSettings">
@@ -392,6 +393,7 @@
             <filename>element_white_rectangle_glossy.png</filename>
             <filename>powerup-e.png</filename>
             <filename>powerup-p.png</filename>
+            <filename>powerup-c.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

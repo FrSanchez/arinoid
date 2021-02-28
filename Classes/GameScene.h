@@ -21,27 +21,29 @@ private:
     int _level;
     int _score = 0;
     int _lives = 3;
-    Ball* _ball;
+//    Ball* _ball;
     Paddle* _paddle;
     void initRound();
     void die();
     void endScene(float dt);
     void winLevel();
     void initLevel();
-    cocos2d::Node* createShadow(cocos2d::Vec2 pos, cocos2d::Color4F color);
+    cocos2d::Node* createShadow(cocos2d::Vec2 pos, cocos2d::Color4F color, cocos2d::Size size);
     cocos2d::Sprite* addLifeSprite(int pos);
     int getGainThreshold();
     cocos2d::Node* getContact(cocos2d::PhysicsBody *a, cocos2d::PhysicsBody *b, int tag);
+    Ball* addBall();
+    void loseBall(Ball* ball);
     
     float initialVelocity;
     
     int _brickCount;
     bool _debugDraw = false;
     int _gainLevelThreshold;
-    cocos2d::Vector<Ball*> _balls;
+    int _ballCount = 0;
     cocos2d::Vector<cocos2d::Sprite*> _livesSprites;
 
-    void tick(float dt);
+    void removeBalls();
     void addToScore(int value);
     
     static const int maxLevel = 12;
@@ -355,6 +357,7 @@ public:
     bool onContactBegin(cocos2d::PhysicsContact& contact);
     virtual bool init();
     void makeLevel(Arena* arena, int level);
+    void extraBallsPowerUp(void);
     
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);

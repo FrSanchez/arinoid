@@ -85,31 +85,48 @@ bool GameScene::init()
     menu->setPosition(Vec2(item->getContentSize().width / 2 + 10, size.height - item->getContentSize().height / 2 - 10));
 // cheat level end
     
-    _ball = Ball::create();
-    arena->addChild(_ball);
-    schedule([&, arena](float dt){
-        if (_ball->isVisible()) {
-            auto shadow = createShadow(_ball->getPosition(), Color4F::GRAY);
-            arena->addChild(shadow);
-        }
-    }, "streakUpdate");
     _level = 1;
     initLevel();
     
     ExtraPower::callbacksMap.clear();
     ExtraPower::callbacksMap['e'] = CC_CALLBACK_0(Paddle::powerUpGrow, _paddle);
     ExtraPower::callbacksMap['p'] = CC_CALLBACK_0(Paddle::powerUpShrink, _paddle);
-    
+    ExtraPower::callbacksMap['c'] = CC_CALLBACK_0(GameScene::extraBallsPowerUp, this);
     return true;
 }
 
-Node* GameScene::createShadow(Vec2 pos, Color4F color)
+void GameScene::extraBallsPowerUp()
+{
+    auto _ball = getChildByTag(ARENA_TAG)->getChildByTag(BALL_TAG);
+    float angle = 60;
+    for (int i =0 ; i< 3; i++) {
+        auto ball = addBall();
+        ball->setPosition(_ball->getPosition());
+        angle+=60;
+    }
+}
+
+Ball* GameScene::addBall()
+{
+    auto ball = Ball::create();
+    auto arena = getChildByTag(ARENA_TAG);
+    int x = cocos2d::random(0, 10) > 5 ? initialVelocity : -initialVelocity;
+    ball->getPhysicsBody()->setVelocity(Vec2(x, initialVelocity));
+    ball->setOnLostBall(CC_CALLBACK_1(GameScene::loseBall, this));
+    arena->addChild(ball);
+    _ballCount++;
+    log("New ball now %d speed %f", _ballCount, ball->getPhysicsBody()->getVelocity().length());
+
+    return ball;
+}
+
+Node* GameScene::createShadow(Vec2 pos, Color4F color, Size size)
 {
     auto draw = DrawNode::create();
     draw->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     draw->setPosition(pos);
 
-    draw->drawSolidCircle(Vec2::ZERO, _ball->getContentSize().width , CC_DEGREES_TO_RADIANS(90), 20, 0.5f, 0.5f, color);
+    draw->drawSolidCircle(Vec2::ZERO, size.width / 2 , CC_DEGREES_TO_RADIANS(90), 20, 0.5f, 0.5f, color);
     draw->setOpacity(128);
     auto seq = Sequence::create(FadeOut::create(0.15), CallFunc::create([&, draw](){
         draw->removeFromParentAndCleanup(true);
@@ -162,13 +179,27 @@ void GameScene::endScene(float dt)
     Director::getInstance()->replaceScene(fade);
 }
 
+void GameScene::removeBalls()
+{
+    _ballCount = 0;
+
+    Node* ball =nullptr;
+    do {
+        ball = getChildByTag(ARENA_TAG)->getChildByTag(BALL_TAG);
+        if (nullptr != ball) {
+            ball->removeFromParentAndCleanup(true);
+        }
+    } while (ball != nullptr);
+
+}
+
 void GameScene::initRound()
 {
     auto size = Director::getInstance()->getVisibleSize();
+
+    removeBalls();
     
-    _paddle->setPosition(Vec2(size.width / 2, _ball->getContentSize().height * 2));
-    _ball->getPhysicsBody()->setVelocity(Vec2::ZERO);
-    _ball->setVisible(false);
+    _paddle->setPosition(Vec2(size.width / 2, 64));
 
     if (_lives <= 0) {
         auto gameOver = Label::createWithBMFont(GAME_FONT, "GAME OVER!");
@@ -189,9 +220,8 @@ void GameScene::initRound()
     addChild(getReady);
 
     scheduleOnce([=](float dt){
-        int x = cocos2d::random(0, 10) > 5 ? initialVelocity : -initialVelocity;
+        auto _ball = addBall();
         _ball->setPosition(_paddle->getPosition());
-        _ball->getPhysicsBody()->setVelocity(Vec2(x, initialVelocity));
         roundLbl->removeFromParentAndCleanup(true);
         getReady->removeFromParentAndCleanup(true);
         if (_livesSprites.size() > 0) {
@@ -210,18 +240,12 @@ void GameScene::die()
 {
     AudioEngine::stopAll();
     AudioEngine::play2d("10.mp3", false, 1.0f);
-    _ball->setPosition(128, 128);
-    _ball->getPhysicsBody()->setVelocity(Vec2::ZERO);
-    _ball->setVisible(false);
+    _ballCount = 0;
+//    _ball->setPosition(128, 128);
+//    _ball->getPhysicsBody()->setVelocity(Vec2::ZERO);
+//    _ball->setVisible(false);
     _paddle->die( CC_CALLBACK_0(GameScene::initRound, this));
     _lives--;
-}
-
-void GameScene::tick(float dt)
-{
-    if (_ball && _ball->getPosition().y < 0) {
-        die();
-    }
 }
 
 void GameScene::makeLevel(Arena* arena, int level)
@@ -253,9 +277,7 @@ void GameScene::makeLevel(Arena* arena, int level)
 
 void GameScene::winLevel()
 {
-    _ball->setPosition(0, -128);
-    _ball->getPhysicsBody()->setVelocity(Vec2::ZERO);
-    _ball->setVisible(false);
+    removeBalls();
     _paddle->setVisible(false);
 
     AudioEngine::stopAll();
@@ -264,6 +286,14 @@ void GameScene::winLevel()
         endScene(0);
         return;
     }
+    
+    Node* powerUp = nullptr;
+    do {
+        powerUp = getChildByTag(ARENA_TAG)->getChildByTag(POWERUP_TAG);
+        if (nullptr != powerUp) {
+            powerUp->removeFromParentAndCleanup(true);
+        }
+    } while(powerUp != nullptr);
 
     AudioEngine::play2d("9.mp3", false, 1.0);
     scheduleOnce([&](float dt) {
@@ -273,13 +303,24 @@ void GameScene::winLevel()
 
 Node* GameScene::getContact(PhysicsBody *a, PhysicsBody *b, int tag)
 {
-    if (a->getNode()->getTag() == tag) {
-        return a->getNode();
+    auto aNode = a->getNode();
+    auto bNode = b->getNode();
+    if (aNode != nullptr && aNode->getTag() == tag) {
+        return aNode;
     }
-    if (b->getNode()->getTag() == tag) {
-        return b->getNode();
+    if (bNode != nullptr && bNode->getTag() == tag) {
+        return bNode;
     }
     return nullptr;
+}
+
+void GameScene::loseBall(Ball* ball)
+{
+    _ballCount--;
+    ball->removeFromParentAndCleanup(true);
+    if (_ballCount <= 0) {
+        die();
+    }
 }
 
 bool GameScene::onContactBegin(PhysicsContact& contact)
@@ -294,16 +335,15 @@ bool GameScene::onContactBegin(PhysicsContact& contact)
     ExtraPower* power = static_cast<ExtraPower*>( getContact(a, b, POWERUP_TAG));
     Paddle* paddle = static_cast<Paddle*>( getContact(a, b, PADDLE_TAG));
     
-//    log("contact %s %s", itoa(a->getCategoryBitmask(), 2).c_str(), itoa(b->getCategoryBitmask(), 2).c_str());
+    log("contact %s %s", itoa(a->getCategoryBitmask(), 2).c_str(), itoa(b->getCategoryBitmask(), 2).c_str());
     
-//    if (ball != nullptr & arena != nullptr) {
     if (ball) {
+        log("%f %f", ball->getPhysicsBody()->getMoment(), ball->getPhysicsBody()->getVelocity().length());
         if (arena) {
-//        CCLOG("pos %f, %f  , vel %f, %f", ball->getPosition().x, ball->getPosition().y, ball->getPhysicsBody()->getVelocity().x, ball->getPhysicsBody()->getVelocity().y);
-        // find if hit the bottom wall, by checing velocity y is negative and if the ball is lower than the paddle
-            if (_ball->getPosition().y < _paddle->getPosition().y - _paddle->getContentSize().height
-                && _ball->getPhysicsBody()->getVelocity().y < 0) {
-                die();
+            
+            if (ball->getPosition().y < _paddle->getPosition().y - _paddle->getContentSize().height
+                            && ball->getPhysicsBody()->getVelocity().y < 0) {
+                loseBall(ball);
             }
         }
         if (paddle) {
@@ -333,7 +373,9 @@ bool GameScene::onContactBegin(PhysicsContact& contact)
             CC_SAFE_DELETE(data);
             _brickCount--;
             if (_brickCount <= 0) {
-                winLevel();
+                scheduleOnce([&](float dt){
+                    winLevel();
+                }, 0, "winLevel");
             }
         }
     }

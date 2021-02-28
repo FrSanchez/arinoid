@@ -18,7 +18,7 @@ private:
     int tileSize;
     int numXTiles;
     int numYTiles;
-    
+    cocos2d::Rect _arenaRect;
     Arena();
     void makeBackground(int tile);
     cocos2d::Sprite* drawTile(std::string frameName, int, int);
@@ -28,6 +28,7 @@ public:
     virtual bool init(int tileNum);
     ~Arena();
     void setTile(int tileNum);
+    cocos2d::Rect getArenaRect() { return _arenaRect; }
     
     constexpr static const char * const borderNames[8] = { "leftBorder", "rightBorder",
         "leftSpecialBorder", "rightSpecialBorder",

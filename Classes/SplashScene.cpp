@@ -55,20 +55,7 @@ bool SplashScene::init()
     loadingBar->setPercent(1);
     loadingBar->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     
-    schedule([&, loadingBar](float dt){
-        static int num = 1;
-        static float pct = 1;
-        if (num < 12) {
-            auto name = StringUtils::format("%d.mp3", num);
-            AudioEngine::preload(name.c_str());
-            num++;
-            pct = num * 75 / 13;
-        } else {
-            scheduleOnce(CC_SCHEDULE_SELECTOR(SplashScene::doProgress), 0);
-            pct += dt * 10;
-        }
-        loadingBar->setPercent(pct);
-    }, 0.2, "porgressBar");
+    scheduleOnce(CC_SCHEDULE_SELECTOR(SplashScene::doProgress), 0);
     
     return true;
 }
@@ -77,7 +64,15 @@ void SplashScene::doProgress(float dt)
 {
     // first cache sounds
     LoadingBar* loadingBar = static_cast<LoadingBar*>(getChildByTag(1));
-        
+    float pct = 0;
+    for(int num = 1 ; num <= 12; num++)
+    {
+        auto name = StringUtils::format("%d.mp3", num);
+        AudioEngine::preload(name.c_str());
+        num++;
+        pct = num * 75 / 13;
+        loadingBar->setPercent(pct);
+    }
     AudioEngine::preload("loop.mp3");
     
     auto size = Director::getInstance()->getVisibleSize();

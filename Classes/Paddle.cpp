@@ -57,7 +57,14 @@ void Paddle::addPhysicsBody()
     if (pb != nullptr) {
         removeComponent(pb);
     }
-    pb = PhysicsBody::createBox(getContentSize(), PhysicsMaterial(0.1f, 1, 0.0f) );
+    
+    pb = PhysicsBody::create();
+    PhysicsMaterial mat(PHYSICS_INFINITY, 1, 0.0f);
+    
+    pb->addShape(PhysicsShapeBox::create(Size(_contentSize.width - _contentSize.height * 2, _contentSize.height), mat, Vec2(0, 0)));
+    pb->addShape(PhysicsShapeCircle::create( getContentSize().height / 2, mat, Vec2(_contentSize.width / 2, 0)));
+    pb->addShape(PhysicsShapeCircle::create( getContentSize().height / 2, mat, Vec2( -_contentSize.width / 2, 0)));
+//    pb = PhysicsBody::createBox(getContentSize(), PhysicsMaterial(0.1f, 1, 0.0f) );
     pb->setDynamic(false);
     pb->setGravityEnable(false);
     pb->setCategoryBitmask(0x04);    // 00100
