@@ -39,14 +39,14 @@ bool SplashScene::init()
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("spritesheet.plist");
 
     auto icon = Sprite::createWithSpriteFrameName("title");
-    addChild(icon);
     icon->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     icon->setScale(2);
     icon->setTag(2);
     icon->setPosition(Vec2(size.width/ 2, size.height/ 2));
     icon->setOpacity(0);
     icon->runAction( FadeIn::create(2));
-    
+    addChild(icon);
+
     LoadingBar* loadingBar = LoadingBar::create("sliderProgress.png");
     addChild(loadingBar);
     loadingBar->setTag(1);
@@ -57,21 +57,23 @@ bool SplashScene::init()
     
     scheduleOnce(CC_SCHEDULE_SELECTOR(SplashScene::doProgress), 0);
     
+    schedule([&, loadingBar](float dt) {
+        static float pct = 0;
+        pct+= 25*dt;
+        loadingBar->setPercent(pct);
+    }, 0, "pct");
+    
     return true;
 }
 
 void SplashScene::doProgress(float dt)
 {
     // first cache sounds
-    LoadingBar* loadingBar = static_cast<LoadingBar*>(getChildByTag(1));
-    float pct = 0;
     for(int num = 1 ; num <= 12; num++)
     {
         auto name = StringUtils::format("%d.mp3", num);
         AudioEngine::preload(name.c_str());
         num++;
-        pct = num * 75 / 13;
-        loadingBar->setPercent(pct);
     }
     AudioEngine::preload("loop.mp3");
     
@@ -142,7 +144,7 @@ void SplashScene::doProgress(float dt)
     // Add listener
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, this);
     
-    loadingBar->removeFromParentAndCleanup(true);
+    getChildByTag(1)->removeFromParentAndCleanup(true);
     this->unscheduleAllCallbacks();
 
 }
