@@ -261,7 +261,7 @@ void GameScene::makeLevel(Arena* arena, int level)
         }
     } while(brick);
     
-    arena->setTile(level);
+    arena->setTile(0);
     for (int y = 0; y < 24; y++) {
         for(int x = 0; x < 12; x++) {
             if (levels[level][y][x] > 0) {

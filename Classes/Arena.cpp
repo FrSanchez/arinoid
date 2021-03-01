@@ -37,14 +37,15 @@ void Arena::setTile(int tileNum)
 {
 //    tileNum %= MAX_NUM_TILES;
     auto color = Color3B(random(0, 255), random(0, 255), random(0, 255));
-    auto children = getChildren();
+    auto children = getChildByTag(0x88)->getChildren();
+    auto tintTo = TintTo::create(tileNum, random(0, 255), random(0, 255), random(0, 255));
     for (auto iter : children){
         Sprite* sprite = dynamic_cast<Sprite *>(iter);
         if (sprite && sprite->getTag() == 0x11) {
-            sprite->setColor(color);
-//            sprite->setSpriteFrame(tiles[tileNum]);
+            sprite->runAction(tintTo->clone());
         }
     }
+    scheduleOnce([&](float dt){ setTile(10);}, 10, "recolor");
 }
 
 // on "init" you need to initialize your instance
@@ -71,14 +72,22 @@ void Arena::makeBackground(int tilenum)
 //        auto border = drawTile(borderNames[borderleft[y]], 0, y);
 //        border = drawTile(borderNames[borderright[y]], numXTiles + 1, y);
 //    }
+    Node* root = Node::create();
+    root->setTag(0x88);
+    addChild(root);
     for(int x = 0; x < numXTiles; x++) {
         for (int y = 0; y < numYTiles; y++) {
             auto tile = drawTile("", x + 1, y );
             tile->setTag(0x11);
+            root->addChild(tile);
         }
     }
     
-    auto pb = PhysicsBody::createEdgeBox(Size(numXTiles * tileSize + 4, (numYTiles + 1) * tileSize), PhysicsMaterial(0.1, 1, 0.1), 2, Vec2(0, -tileSize / 2));
+    auto pb = PhysicsBody::create();
+    PhysicsMaterial mat(PHYSICS_INFINITY, 1, 0.0f);
+    pb->addShape(PhysicsShapeBox::create(Size(tileSize,  (numYTiles + 1) * tileSize), mat, Vec2(((numXTiles + 1) * tileSize) / 2 , 0)));
+    pb->addShape(PhysicsShapeBox::create(Size(tileSize,  (numYTiles + 1) * tileSize), mat, Vec2(((-numXTiles - 1) * tileSize) /2, 0)));
+    pb->addShape(PhysicsShapeBox::create(Size( (numXTiles + 1) * tileSize + 4,  tileSize), mat, Vec2(0, numYTiles / 2 * tileSize + tileSize)));
     pb->setPositionOffset(Vec2((1 + numXTiles) * tileSize / 2 , ( numYTiles) * tileSize / 2 ));
     pb->setGravityEnable(false);
     pb->setCategoryBitmask(0x08);    // 1000
@@ -95,6 +104,5 @@ Sprite* Arena::drawTile(std::string frameName, int x, int y)
     auto sprite = Sprite::createWithSpriteFrameName("tile");
     sprite->setPosition(Vec2(x * tileSize, tileSize * y));
     sprite->setAnchorPoint(Vec2::ANCHOR_MIDDLE_BOTTOM);
-    addChild(sprite);
     return sprite;
 }
