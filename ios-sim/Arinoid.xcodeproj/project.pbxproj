@@ -4843,7 +4843,7 @@
 				LastUpgradeCheck = 1240;
 			};
 			buildConfigurationList = DD5C15282188433196F67712 /* Build configuration list for PBXProject "Arinoid" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -6076,7 +6076,7 @@
 				INFOPLIST_FILE = /Users/francisco.sanchez/Development/games/arinoid/proj.ios_mac/ios/Info.plist;
 				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-DNDEBUG",
 					"'-std=gnu99'",
@@ -6465,7 +6465,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SYMROOT = "/Users/francisco.sanchez/Development/games/arinoid/ios-sim/build";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -7061,7 +7061,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SYMROOT = "/Users/francisco.sanchez/Development/games/arinoid/ios-sim/build";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -7423,7 +7423,7 @@
 				INFOPLIST_FILE = /Users/francisco.sanchez/Development/games/arinoid/proj.ios_mac/ios/Info.plist;
 				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "   '-std=gnu99' ";
 				OTHER_CPLUSPLUSFLAGS = "   '-std=c++11' ";
 				OTHER_LDFLAGS = (
@@ -7558,7 +7558,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SYMROOT = "/Users/francisco.sanchez/Development/games/arinoid/ios-sim/build";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -7718,7 +7718,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SYMROOT = "/Users/francisco.sanchez/Development/games/arinoid/ios-sim/build";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -7854,7 +7854,7 @@
 				INFOPLIST_FILE = /Users/francisco.sanchez/Development/games/arinoid/proj.ios_mac/ios/Info.plist;
 				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-DNDEBUG",
 					"'-std=gnu99'",
@@ -8357,7 +8357,7 @@
 				INFOPLIST_FILE = /Users/francisco.sanchez/Development/games/arinoid/proj.ios_mac/ios/Info.plist;
 				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-DNDEBUG",
 					"'-std=gnu99'",
