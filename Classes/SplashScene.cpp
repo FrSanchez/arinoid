@@ -111,42 +111,7 @@ void SplashScene::doProgress(float dt)
     menu = Menu::create(closeItem, NULL);
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
-//    
-//    auto pu = PowerUp::create('O');
-//    pu->setPosition(Vec2(size.width * 1/ 8, 128));
-//    pu->setScale(2);
-//    addChild(pu);
-//
-//    pu = PowerUp::create('B');
-//    pu->setPosition(Vec2(size.width * 2 / 8, 128));
-//    pu->setScale(2);
-//    addChild(pu);
-//
-//    pu = PowerUp::create('A');
-//    pu->setPosition(Vec2(size.width * 3 / 8, 128));
-//    pu->setScale(2);
-//    addChild(pu);
-//    
-//    pu = PowerUp::create('C');
-//    pu->setPosition(Vec2(size.width * 4 / 8, 128));
-//    pu->setScale(2);
-//    addChild(pu);
-//    
-//    pu = PowerUp::create('F');
-//    pu->setPosition(Vec2(size.width * 5 / 8, 128));
-//    pu->setScale(2);
-//    addChild(pu);
-//
-//    pu = PowerUp::create('G');
-//    pu->setPosition(Vec2(size.width * 6 / 8, 128));
-//    pu->setScale(2);
-//    addChild(pu);
-//
-//    pu = PowerUp::create('D');
-//    pu->setPosition(Vec2(size.width * 7 / 8, 128));
-//    pu->setScale(2);
-//    addChild(pu);
-        
+
     //  Create a "one by one" touch event listener
     // (processes one touch at a time)
     auto listener1 = EventListenerTouchOneByOne::create();

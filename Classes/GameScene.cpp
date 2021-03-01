@@ -268,7 +268,10 @@ void GameScene::makeLevel(Arena* arena, int level)
                 auto brick = Brick::create(Vec2(x + 1, y + 4), levels[level][y][x] - 1);
                 if (brick) {
                     arena->addChild(brick);
-                    _brickCount++;
+                    auto *data = static_cast<Brick::BrickData *>(brick->getUserData());
+                    if (data->value > 0) {
+                        _brickCount++;
+                    }
                 }
             }
         }
