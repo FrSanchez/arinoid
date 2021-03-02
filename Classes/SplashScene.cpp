@@ -38,9 +38,8 @@ bool SplashScene::init()
 //    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("arinoid.plist");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("spritesheet.plist");
 
-    auto icon = Sprite::createWithSpriteFrameName("title");
+    auto icon = Sprite::createWithSpriteFrameName("arinoid");
     icon->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-    icon->setScale(2);
     icon->setTag(2);
     icon->setPosition(Vec2(size.width/ 2, size.height/ 2));
     icon->setOpacity(0);
@@ -83,10 +82,9 @@ void SplashScene::doProgress(float dt)
     auto icon = static_cast<Sprite*>(getChildByTag(2));
     removeChild(icon, true);
     
-    icon = Sprite::createWithSpriteFrameName("title");
+    icon = Sprite::createWithSpriteFrameName("arinoid");
     icon->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-    icon->setScale(2);
-    icon->setPosition(Vec2::ZERO - icon->getContentSize() * 0.5);
+    icon->setPosition(Vec2::ZERO);
 
     auto startItem = MenuItemSprite::create(icon, icon, [=](Ref* pSender){
         auto scene = GameScene::create();

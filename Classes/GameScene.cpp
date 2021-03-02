@@ -36,10 +36,10 @@ bool GameScene::init()
     auto size = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
-    auto title = Sprite::createWithSpriteFrameName("title-small");
-    title->setPosition(Vec2(size.width / 2, size.height - 64));
-    title->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-    addChild(title);
+//    auto title = Sprite::createWithSpriteFrameName("title");
+//    title->setPosition(Vec2(size.width / 2, size.height ));
+//    title->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+//    addChild(title);
     
     auto *frame = SpriteFrameCache::getInstance()->getSpriteFrameByName("tile");
     initialVelocity = frame->getOriginalSize().width * 5;
@@ -64,25 +64,25 @@ bool GameScene::init()
     _eventDispatcher->addEventListenerWithSceneGraphPriority(contactListener, this);
     
 // Togle debug
-    MenuItemFont::setFontSize(64);
-    auto item = MenuItemFont::create("Toggle debug", [&](Ref* pSender) {
-        _debugDraw = !_debugDraw;
-        _physicsWorld->setDebugDrawMask(_debugDraw ? PhysicsWorld::DEBUGDRAW_ALL : PhysicsWorld::DEBUGDRAW_NONE);
-    });
-    
-    auto menu = Menu::create(item, nullptr);
-    this->addChild(menu);
-    menu->setPosition(Vec2(size.width - item->getContentSize().width / 2 - 10, size.height - item->getContentSize().height / 2 - 10));
+//    MenuItemFont::setFontSize(64);
+//    auto item = MenuItemFont::create("Toggle debug", [&](Ref* pSender) {
+//        _debugDraw = !_debugDraw;
+//        _physicsWorld->setDebugDrawMask(_debugDraw ? PhysicsWorld::DEBUGDRAW_ALL : PhysicsWorld::DEBUGDRAW_NONE);
+//    });
+//
+//    auto menu = Menu::create(item, nullptr);
+//    this->addChild(menu);
+//    menu->setPosition(Vec2(size.width - item->getContentSize().width / 2 - 10, size.height - item->getContentSize().height / 2 - 10));
 // toggle debug end
     
 // cheat level begin
-    item = MenuItemFont::create("next Level", [&](Ref* pSender) {
-        winLevel();
-    });
-    
-    menu = Menu::create(item, nullptr);
-    this->addChild(menu);
-    menu->setPosition(Vec2(item->getContentSize().width / 2 + 10, size.height - item->getContentSize().height / 2 - 10));
+//    auto item = MenuItemFont::create("next Level", [&](Ref* pSender) {
+//        winLevel();
+//    });
+//
+//    auto menu = Menu::create(item, nullptr);
+//    this->addChild(menu);
+//    menu->setPosition(Vec2(item->getContentSize().width / 2 + 10, size.height - item->getContentSize().height / 2 - 10));
 // cheat level end
     
     _level = 1;
@@ -212,7 +212,7 @@ void GameScene::initRound()
     
     auto roundLbl = Label::createWithBMFont(GAME_FONT, str.c_str());
     addChild(roundLbl);
-    roundLbl->setPosition(Vec2(size.width / 2, size.height / 2 - 92));
+    roundLbl->setPosition(Vec2(size.width / 2, size.height / 2 - 128));
 
     
     auto getReady = Label::createWithBMFont(GAME_FONT, "GET READY!");
