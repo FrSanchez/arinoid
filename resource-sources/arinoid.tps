@@ -187,7 +187,7 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">arinoid.png</key>
+            <key type="filename">arinoid640.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -196,9 +196,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>256,65,512,130</rect>
+                <rect>160,41,320,81</rect>
                 <key>scale9Paddings</key>
-                <rect>256,65,512,130</rect>
+                <rect>160,41,320,81</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -336,7 +336,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">title-small.png</key>
+            <key type="filename">tile128.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -345,24 +345,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>19,7,37,13</rect>
+                <rect>32,32,64,64</rect>
                 <key>scale9Paddings</key>
-                <rect>19,7,37,13</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">title.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>40,21,81,41</rect>
-                <key>scale9Paddings</key>
-                <rect>40,21,81,41</rect>
+                <rect>32,32,64,64</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -370,10 +355,7 @@
         <key>fileList</key>
         <array>
             <filename>tile.png</filename>
-            <filename>title-small.png</filename>
-            <filename>title.png</filename>
             <filename>paddleLife.png</filename>
-            <filename>arinoid.png</filename>
             <filename>element_blue_rectangle_glossy.png</filename>
             <filename>element_green_rectangle_glossy.png</filename>
             <filename>element_grey_rectangle_glossy.png</filename>
@@ -394,6 +376,8 @@
             <filename>powerup-e.png</filename>
             <filename>powerup-p.png</filename>
             <filename>powerup-c.png</filename>
+            <filename>arinoid640.png</filename>
+            <filename>tile128.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

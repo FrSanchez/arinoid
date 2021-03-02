@@ -34,11 +34,13 @@ bool SplashScene::init()
     }
 
     auto size = Director::getInstance()->getVisibleSize();
+    
+    auto black = LayerColor::create(Color4B(0x10,0x10,0x10,0xff));
+    addChild(black);
 
-//    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("arinoid.plist");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("spritesheet.plist");
 
-    auto icon = Sprite::createWithSpriteFrameName("arinoid");
+    auto icon = Sprite::createWithSpriteFrameName("arinoid640");
     icon->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     icon->setTag(2);
     icon->setPosition(Vec2(size.width/ 2, size.height/ 2));
@@ -82,7 +84,7 @@ void SplashScene::doProgress(float dt)
     auto icon = static_cast<Sprite*>(getChildByTag(2));
     removeChild(icon, true);
     
-    icon = Sprite::createWithSpriteFrameName("arinoid");
+    icon = Sprite::createWithSpriteFrameName("arinoid640");
     icon->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     icon->setPosition(Vec2::ZERO);
 

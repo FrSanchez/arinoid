@@ -910,16 +910,24 @@ constexpr static const short levels[][24][12] = {
 using namespace std;
     
 int main(int argc, const char * argv[]) {
-    ofstream wf("level.dat", ios::out | ios::binary);
-    if(!wf) {
-        cout << "Cannot open file!" << endl;
-        return 1;
+    int x = 168, y = 32;
+    for(int i = 0; i < 64; i++, x++, y++) {
+        cout << "\t<key>tile" << i << "</key>" <<endl;
+        cout << "\t<dict>" << endl;
+        cout << "\t    <key>aliases</key>" << endl;
+        cout << "\t    <array/>" << endl;
+        cout << "\t    <key>spriteOffset</key>" << endl;
+        
+        cout << "\t    <string>{0,0}</string>" << endl;
+        cout << "\t    <key>spriteSize</key>" << endl;
+        cout << "\t    <string>{64,64}</string>" << endl;
+        cout << "\t    <key>spriteSourceSize</key>" << endl;
+        cout << "\t    <string>{64,64}</string>" << endl;
+        cout << "\t    <key>textureRect</key>" << endl;
+        cout << "\t    <string>{{" << x <<"," << y <<"},{64,64}}</string>" << endl;
+        cout << "\t    <key>textureRotated</key>" << endl;
+        cout << "\t    <false/>" << endl;
+        cout << "\t</dict>" << endl;
     }
-    for(int i = 0; i < maxLevel; i++) {
-        cout << "writing level " << i+1 << endl;
-        wf.write((char*) &levels[i], sizeof(short) * 24 * 12);
-    }
-    
-    cout <<"level.dat written"<<endl;
     return 0;
 }

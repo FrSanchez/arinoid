@@ -22,6 +22,7 @@ private:
     Arena();
     void makeBackground(int tile);
     cocos2d::Sprite* drawTile(std::string frameName, int, int);
+    cocos2d::Action* createAnimation();
     
 public:
     static Arena* create(int tileNum);

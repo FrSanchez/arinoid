@@ -46,6 +46,7 @@ void Arena::setTile(int tileNum)
         }
     }
     scheduleOnce([&](float dt){ setTile(10);}, 10, "recolor");
+
 }
 
 // on "init" you need to initialize your instance
@@ -75,9 +76,13 @@ void Arena::makeBackground(int tilenum)
     Node* root = Node::create();
     root->setTag(0x88);
     addChild(root);
-    for(int x = 0; x < numXTiles; x++) {
-        for (int y = 0; y < numYTiles; y++) {
-            auto tile = drawTile("", x + 1, y );
+    auto seq = Sequence::create(MoveBy::create(3, Vec2(-128, 64)), MoveBy::create(0, Vec2(128, -64)), nullptr);
+    root->runAction(RepeatForever::create(seq));
+
+    auto anim = createAnimation();
+    for(int x = -2; x < numXTiles + 4; x++) {
+        for (int y = -2; y < numYTiles + 8; y++) {
+            auto tile = drawTile("tile", x + 1, y );
             tile->setTag(0x11);
             root->addChild(tile);
         }
@@ -99,9 +104,14 @@ void Arena::makeBackground(int tilenum)
     _arenaRect = Rect(0, 0, numXTiles * tileSize, numYTiles * tileSize);
 }
 
+Action* Arena::createAnimation()
+{
+   
+}
+
 Sprite* Arena::drawTile(std::string frameName, int x, int y)
 {
-    auto sprite = Sprite::createWithSpriteFrameName("tile");
+    auto sprite = Sprite::createWithSpriteFrameName(frameName);
     sprite->setPosition(Vec2(x * tileSize, tileSize * y));
     sprite->setAnchorPoint(Vec2::ANCHOR_MIDDLE_BOTTOM);
     return sprite;
