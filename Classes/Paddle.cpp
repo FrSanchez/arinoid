@@ -21,7 +21,7 @@ void Paddle::powerUpGrow()
     runAction(seq);
     scheduleOnce([&](float dt) {
         powerUpEnd();
-    }, 5, "powerupend");
+    }, 10, "powerupend");
 }
 
 void Paddle::powerUpShrink()
@@ -36,7 +36,7 @@ void Paddle::powerUpShrink()
     runAction(seq);
     scheduleOnce([&](float dt) {
         powerUpEnd();
-    }, 5, "powerupend");
+    }, 8, "powerupend");
 }
 
 void Paddle::powerUpEnd()

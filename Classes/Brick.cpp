@@ -69,14 +69,14 @@ void Brick::remove()
     this->runAction(seq);
     
     auto rand = CCRANDOM_0_1();
-    if (rand > 0.3)
+    if (rand > 0.6)
     {
         log("Extra Power created: %f", rand);
         ExtraPower* powerUp;
-        if (rand > 0.5 and rand <= 0.7) {
+        if (rand <= 0.75) {
             powerUp = ExtraPower::createWithType('p');
         } else {
-            if (rand > 0.7) {
+            if (rand < 0.9) {
                 powerUp = ExtraPower::createWithType('e');
             } else {
                 powerUp = ExtraPower::createWithType('c');
