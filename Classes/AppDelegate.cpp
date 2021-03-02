@@ -32,7 +32,7 @@
 
 USING_NS_CC;
 
-#define APP_NAME "Snake"
+#define APP_NAME "Arinoid"
 
 AppDelegate::AppDelegate()
 {

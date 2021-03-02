@@ -240,10 +240,7 @@ void GameScene::die()
 {
     AudioEngine::stopAll();
     AudioEngine::play2d("10.mp3", false, 1.0f);
-    _ballCount = 0;
-//    _ball->setPosition(128, 128);
-//    _ball->getPhysicsBody()->setVelocity(Vec2::ZERO);
-//    _ball->setVisible(false);
+    this->removeBalls();
     _paddle->die( CC_CALLBACK_0(GameScene::initRound, this));
     _lives--;
 }
