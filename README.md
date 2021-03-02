@@ -7,7 +7,7 @@ For iOS device
 cd cocos2d-
 mkdir ios-build && cd ios-build
 cmake .. -GXcode -DCMAKE_SYSTEM_NAME=iOS -DCMAKE_OSX_SYSROOT=iphoneos
-open Cocos2d-x.xcodeproj
+open Arinoid.xcodeproj
 ```
 
 For iOS simulator
@@ -15,7 +15,7 @@ For iOS simulator
 cd cocos2d-
 mkdir ios-sim && cd ios-sim
 cmake .. -GXcode -DCMAKE_SYSTEM_NAME=iOS -DCMAKE_OSX_SYSROOT=iphonesimulator
-open Cocos2d-x.xcodeproj
+open Arinoid.xcodeproj
 ```
 ## TODO:
 * [ ] Add all power-ups
@@ -24,3 +24,5 @@ open Cocos2d-x.xcodeproj
 * [ ] Cleanup splash screen
 * [ ] Create a level chooser screen
 * [ ] Create more levels
+* [ ] Deprecate old sprite sheet
+* [ ] add animation for background tiles
