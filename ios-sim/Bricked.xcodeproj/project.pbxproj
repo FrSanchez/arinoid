@@ -375,8 +375,9 @@
 		8AB637F463614069A2046285 /* CCAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEE509572A6342D3BB6E170B /* CCAction.cpp */; };
 		8AF597B3FE8E45A2B9023539 /* CCIMEDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF4D34A9D514CC29C6E96D4 /* CCIMEDispatcher.cpp */; };
 		8B343C169DC74C22A741E9DC /* CCSkeletonNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B16A7B655D394F80ACC48F16 /* CCSkeletonNode.cpp */; };
-		8C0A9ECB25EFFE5C00AC4747 /* UnityAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0A9ECA25EFFE5C00AC4747 /* UnityAds.framework */; };
-		8C0A9F5C25F0074200AC4747 /* UnityChan_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C0A9F5B25F0074200AC4747 /* UnityChan_logo.png */; };
+		8CEBDDCB25F03C4500E89012 /* UnityAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CEBDDCA25F03C4500E89012 /* UnityAds.framework */; };
+		8CEBDDDC25F03CB400E89012 /* UnityChan_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEBDDDB25F03CB400E89012 /* UnityChan_logo.png */; };
+		8CEBDDFE25F03D3100E89012 /* UnityAdsBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBDDFD25F03D3100E89012 /* UnityAdsBridge.mm */; };
 		8CFD5EB525EF1979008EB67A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFD5EB425EF1979008EB67A /* Security.framework */; };
 		8CFD5EB725EF197F008EB67A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFD5EB625EF197F008EB67A /* AdSupport.framework */; };
 		8D45D40742C14127B865C088 /* CCPUOnPositionObserverTranslator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FCE35242613484E8C6BA220 /* CCPUOnPositionObserverTranslator.cpp */; };
@@ -1774,8 +1775,6 @@
 		8BC78D01173B43EB8538BDAC /* ZipUtils.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ZipUtils.cpp; path = cocos2d/cocos/base/ZipUtils.cpp; sourceTree = SOURCE_ROOT; };
 		8C019160B42742898314A428 /* AudioMacros.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = AudioMacros.h; path = cocos2d/cocos/audio/apple/AudioMacros.h; sourceTree = SOURCE_ROOT; };
 		8C07B163B0F549039779C84E /* CCPUEmitterManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCPUEmitterManager.cpp; path = cocos2d/extensions/Particle3D/PU/CCPUEmitterManager.cpp; sourceTree = SOURCE_ROOT; };
-		8C0A9ECA25EFFE5C00AC4747 /* UnityAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UnityAds.framework; path = proj.ios_mac/UnityAds.framework; sourceTree = "<group>"; };
-		8C0A9F5B25F0074200AC4747 /* UnityChan_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UnityChan_logo.png; sourceTree = SOURCE_ROOT; };
 		8C3F51FA491B4DB1AF7A4786 /* CCPUOnExpireObserver.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCPUOnExpireObserver.cpp; path = cocos2d/extensions/Particle3D/PU/CCPUOnExpireObserver.cpp; sourceTree = SOURCE_ROOT; };
 		8C63DB0A2AA4433289EFCD2F /* CCPUParticleFollowerTranslator.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCPUParticleFollowerTranslator.cpp; path = cocos2d/extensions/Particle3D/PU/CCPUParticleFollowerTranslator.cpp; sourceTree = SOURCE_ROOT; };
 		8C66604B00174E96AD9FFF8B /* CCTween.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCTween.cpp; path = "cocos2d/cocos/editor-support/cocostudio/CCTween.cpp"; sourceTree = SOURCE_ROOT; };
@@ -1783,6 +1782,11 @@
 		8C9DB721E965429790182AD5 /* CCTechnique.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCTechnique.cpp; path = cocos2d/cocos/renderer/CCTechnique.cpp; sourceTree = SOURCE_ROOT; };
 		8CBF332587FB4FD5AACB7C32 /* CCSpriteFrame.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCSpriteFrame.h; path = cocos2d/cocos/2d/CCSpriteFrame.h; sourceTree = SOURCE_ROOT; };
 		8CDBD387A848438791742BB2 /* Sprite3DReader.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Sprite3DReader.cpp; path = "cocos2d/cocos/editor-support/cocostudio/WidgetReader/Sprite3DReader/Sprite3DReader.cpp"; sourceTree = SOURCE_ROOT; };
+		8CEBDDCA25F03C4500E89012 /* UnityAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UnityAds.framework; sourceTree = "<group>"; };
+		8CEBDDDB25F03CB400E89012 /* UnityChan_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UnityChan_logo.png; sourceTree = "<group>"; };
+		8CEBDDEC25F03D0A00E89012 /* UnityAdsNativeAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnityAdsNativeAPI.h; path = Classes/UnityAdsNativeAPI.h; sourceTree = "<group>"; };
+		8CEBDDFC25F03D3100E89012 /* UnityAdsBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnityAdsBridge.h; path = proj.ios_mac/ios/UnityAdsBridge.h; sourceTree = "<group>"; };
+		8CEBDDFD25F03D3100E89012 /* UnityAdsBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = UnityAdsBridge.mm; path = proj.ios_mac/ios/UnityAdsBridge.mm; sourceTree = "<group>"; };
 		8CFD5EB425EF1979008EB67A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8CFD5EB625EF197F008EB67A /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		8D7553F9F00D41799A7DCB1A /* CCDownloader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCDownloader.h; path = cocos2d/cocos/network/CCDownloader.h; sourceTree = SOURCE_ROOT; };
@@ -2410,9 +2414,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C0A9ECB25EFFE5C00AC4747 /* UnityAds.framework in Frameworks */,
 				8CFD5EB725EF197F008EB67A /* AdSupport.framework in Frameworks */,
 				8CFD5EB525EF1979008EB67A /* Security.framework in Frameworks */,
+				8CEBDDCB25F03C4500E89012 /* UnityAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2573,6 +2577,8 @@
 		0F1918502A754C2CA800D80F /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				8CEBDDFC25F03D3100E89012 /* UnityAdsBridge.h */,
+				8CEBDDFD25F03D3100E89012 /* UnityAdsBridge.mm */,
 				9D2C41E4BD0D4587BC3466B7 /* AppController.h */,
 				B7EAE3B5FABB461D9C3A5BAA /* AppController.mm */,
 				616A6F8BEDC84565A541CF6C /* Images.xcassets */,
@@ -2765,6 +2771,7 @@
 		2EF7064858564755B063B37F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8CEBDDEC25F03D0A00E89012 /* UnityAdsNativeAPI.h */,
 				37539C119C734C2797B0C0FE /* AppDelegate.cpp */,
 				E98AA500AB394DBAA558C5D0 /* AppDelegate.h */,
 				063ED8AF5D19437FB8032D06 /* Arena.cpp */,
@@ -3424,7 +3431,7 @@
 		6927DDBB2A2845CA99EB492A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8C0A9ECA25EFFE5C00AC4747 /* UnityAds.framework */,
+				8CEBDDCA25F03C4500E89012 /* UnityAds.framework */,
 				8CFD5EB425EF1979008EB67A /* Security.framework */,
 				8CFD5EB625EF197F008EB67A /* AdSupport.framework */,
 			);
@@ -3562,6 +3569,7 @@
 		7C96BE9B2BE04A6BB930B46E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8CEBDDDB25F03CB400E89012 /* UnityChan_logo.png */,
 				23A6977D1F2E4A2BAD02E776 /* audio */,
 				A7183F5D530F4F0597320EAB /* fonts */,
 				B49A487FA8AC4281B1E51917 /* res */,
@@ -3575,7 +3583,6 @@
 				699A445384E0491FA6C72C5B /* spritesheet.png */,
 				81932BBB454745EEB79092F2 /* stars.png */,
 				1EEAD541150D4804B98BA2D7 /* Info.plist */,
-				8C0A9F5B25F0074200AC4747 /* UnityChan_logo.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -4893,7 +4900,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C0A9F5C25F0074200AC4747 /* UnityChan_logo.png in Resources */,
+				8CEBDDDC25F03CB400E89012 /* UnityChan_logo.png in Resources */,
 				04EE39E4824B4EC985D4F168 /* Images.xcassets in Resources */,
 				01C8FBC04E864EF29751128F /* LaunchScreen.storyboard in Resources */,
 				0AFAB2E75069479DB3AC8919 /* LaunchScreenBackground.png in Resources */,
@@ -5551,6 +5558,7 @@
 				62D8240D705C442788C59521 /* Ball.cpp in Sources */,
 				F5600D7EB9244FFD8F7A27DC /* Brick.cpp in Sources */,
 				3A8340A4B78C404FBDAD639E /* ExtraPower.cpp in Sources */,
+				8CEBDDFE25F03D3100E89012 /* UnityAdsBridge.mm in Sources */,
 				363E71227EF1407EB7EBC533 /* GameScene.cpp in Sources */,
 				B61B982BCBDD4BC889F585C6 /* Paddle.cpp in Sources */,
 				769CF6F9F72A47E5BB562E14 /* PowerUp.cpp in Sources */,

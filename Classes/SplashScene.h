@@ -11,13 +11,14 @@
 #include "cocos2d.h"
 #include "extensions/cocos-ext.h"
 #include "ui/CocosGUI.h"
-
+#include "UnityAdsNativeAPI.h"
 #include "GameScene.h"
 #include "PowerUp.h"
 
 class SplashScene : public cocos2d::Scene
 {
 private:
+    cocos2d::Label* titleLabel;
     void doProgress(float dt);
     cocos2d::Node* createSpinnyNode(cocos2d::Vec2 pos, cocos2d::Color4F color);
 public:
@@ -30,6 +31,11 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(SplashScene);
+    
+    // Unity Ads
+    void rewardPlayer(const char *placementId);
+    void initUnityAdsFunc();
+    void showUnityAdsFunc(Ref* pSender);
 };
 
 #endif /* SplashScene_hpp */

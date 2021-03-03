@@ -33,12 +33,23 @@ bool SplashScene::init()
         return false;
     }
 
+    initUnityAdsFunc();
+    
     auto size = Director::getInstance()->getVisibleSize();
     
     auto black = LayerColor::create(Color4B(0x10,0x10,0x10,0xff));
     addChild(black);
 
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("spritesheet.plist");
+    
+    titleLabel = Label::createWithTTF("Bricked", "fonts/Marker Felt.ttf", 24);
+    
+    // position the label on the center of the screen
+    titleLabel->setPosition(Vec2(size.width/2,
+                            size.height - titleLabel->getContentSize().height));
+
+    // add the label as a child to this layer
+    this->addChild(titleLabel, 1);
 
     auto icon = Sprite::createWithSpriteFrameName("arinoid640");
     icon->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
@@ -89,9 +100,7 @@ void SplashScene::doProgress(float dt)
     icon->setPosition(Vec2::ZERO);
 
     auto startItem = MenuItemSprite::create(icon, icon, [=](Ref* pSender){
-        auto scene = GameScene::create();
-        auto fade = TransitionFade::create(0.5, scene);
-        Director::getInstance()->replaceScene(fade);
+        showUnityAdsFunc(pSender);
     });
     auto menu = Menu::create(startItem, NULL);
     menu->setPosition(Vec2(size.width/2, size.height/2));
@@ -113,7 +122,7 @@ void SplashScene::doProgress(float dt)
     menu = Menu::create(closeItem, NULL);
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
-
+    
     //  Create a "one by one" touch event listener
     // (processes one touch at a time)
     auto listener1 = EventListenerTouchOneByOne::create();
@@ -180,4 +189,44 @@ void SplashScene::menuCloseCallback(Ref* pSender)
     //_eventDispatcher->dispatchEvent(&customEndEvent);
 
 
+}
+
+
+void SplashScene::initUnityAdsFunc()
+{
+    const char* gameId = "4034261"; // for Android
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    gameId = "4034260";
+#endif
+    
+    UnityAdsInit(gameId, true);
+}
+
+void SplashScene::showUnityAdsFunc(Ref* pSender)
+{
+    const char* zoneString = "Interstitial_iOS";
+    
+    if(UnityAdsIsReady(zoneString)) {
+        UnityAdsShow(zoneString);
+    } else {
+        CCLOG("[UnityAds cpp test] yet cannot show");
+    }
+}
+
+void SplashScene::rewardPlayer(const char *placementId)
+{
+    CCLOG("[UnityAds cpp test] rewarded");
+    const char* targetStr = "Rewarded_iOS";
+    if(strcmp(placementId, targetStr) == 0){
+        if(titleLabel){
+            const char* text = "Congrats!";
+            titleLabel->setString(text);
+        }
+    }
+    if(strcmp(placementId, "Interstitial_iOS") == 0) {
+        auto scene = GameScene::create();
+        auto fade = TransitionFade::create(0.5, scene);
+        Director::getInstance()->replaceScene(fade);
+    }
 }

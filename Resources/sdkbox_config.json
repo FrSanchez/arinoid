@@ -1,0 +1,20 @@
+{
+    "ios": {
+        "UnityAds": {
+            "gameId": "4034260",
+            "testMode": true,
+            "ads": {
+                "banner": {
+                    "placement": "banner",
+                    "type":"banner"
+                }
+            }
+        }
+    },
+    "android": {
+        "UnityAds": {
+            "gameId": "4034261",
+            "testMode": true
+        }
+    }
+}
