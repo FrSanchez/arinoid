@@ -9,6 +9,7 @@
 #define Arena_hpp
 
 #include "cocos2d.h"
+#include "audio/include/AudioEngine.h"
 
 #define ARENA_TAG 0x2f
 #define MAX_NUM_TILES 7

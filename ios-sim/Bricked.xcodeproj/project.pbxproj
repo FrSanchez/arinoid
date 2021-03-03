@@ -375,9 +375,8 @@
 		8AB637F463614069A2046285 /* CCAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEE509572A6342D3BB6E170B /* CCAction.cpp */; };
 		8AF597B3FE8E45A2B9023539 /* CCIMEDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF4D34A9D514CC29C6E96D4 /* CCIMEDispatcher.cpp */; };
 		8B343C169DC74C22A741E9DC /* CCSkeletonNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B16A7B655D394F80ACC48F16 /* CCSkeletonNode.cpp */; };
-		8CEBDDCB25F03C4500E89012 /* UnityAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CEBDDCA25F03C4500E89012 /* UnityAds.framework */; };
-		8CEBDDDC25F03CB400E89012 /* UnityChan_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEBDDDB25F03CB400E89012 /* UnityChan_logo.png */; };
 		8CEBDDFE25F03D3100E89012 /* UnityAdsBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBDDFD25F03D3100E89012 /* UnityAdsBridge.mm */; };
+		8CEBDE1E25F0509C00E89012 /* UnityAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CEBDE1D25F0509C00E89012 /* UnityAds.framework */; };
 		8CFD5EB525EF1979008EB67A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFD5EB425EF1979008EB67A /* Security.framework */; };
 		8CFD5EB725EF197F008EB67A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFD5EB625EF197F008EB67A /* AdSupport.framework */; };
 		8D45D40742C14127B865C088 /* CCPUOnPositionObserverTranslator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FCE35242613484E8C6BA220 /* CCPUOnPositionObserverTranslator.cpp */; };
@@ -1092,7 +1091,7 @@
 		0306BF252A8E475096ECBC58 /* ObjectFactory.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ObjectFactory.h; path = cocos2d/cocos/base/ObjectFactory.h; sourceTree = SOURCE_ROOT; };
 		03137A3639984507AEFE738E /* CCControlStepper.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCControlStepper.cpp; path = cocos2d/extensions/GUI/CCControlExtension/CCControlStepper.cpp; sourceTree = SOURCE_ROOT; };
 		0335087D66B94288923D3CBD /* ccCArray.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ccCArray.h; path = cocos2d/cocos/base/ccCArray.h; sourceTree = SOURCE_ROOT; };
-		0344C1066F3444D186583C55 /* 6.mp3 */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = 6.mp3; path = Resources/audio/6.mp3; sourceTree = SOURCE_ROOT; };
+		0344C1066F3444D186583C55 /* 6.mp3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = audio.mp3; name = 6.mp3; path = Resources/audio/6.mp3; sourceTree = SOURCE_ROOT; };
 		036A3772331F420A91E2E8EF /* CCMenu.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCMenu.cpp; path = cocos2d/cocos/2d/CCMenu.cpp; sourceTree = SOURCE_ROOT; };
 		0371E19B8BCE494FA81EEE3E /* CCDevice-apple.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = "CCDevice-apple.h"; path = "cocos2d/cocos/platform/apple/CCDevice-apple.h"; sourceTree = SOURCE_ROOT; };
 		04A775AD1C6B401FA00A4A5D /* CCPUEventHandlerTranslator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCPUEventHandlerTranslator.h; path = cocos2d/extensions/Particle3D/PU/CCPUEventHandlerTranslator.h; sourceTree = SOURCE_ROOT; };
@@ -1149,7 +1148,7 @@
 		0DBB07BB20074B0D9D05E96A /* CCControlSlider.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCControlSlider.cpp; path = cocos2d/extensions/GUI/CCControlExtension/CCControlSlider.cpp; sourceTree = SOURCE_ROOT; };
 		0DD9DADFFB074F5F97C72794 /* PowerUp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = PowerUp.cpp; path = Classes/PowerUp.cpp; sourceTree = SOURCE_ROOT; };
 		0E0FDE29F94F43789A8FFDA9 /* ConvertUTF.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ConvertUTF.c; path = cocos2d/external/ConvertUTF/ConvertUTF.c; sourceTree = SOURCE_ROOT; };
-		0E101B2F70E147B49270D188 /* 9.mp3 */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = 9.mp3; path = Resources/audio/9.mp3; sourceTree = SOURCE_ROOT; };
+		0E101B2F70E147B49270D188 /* 9.mp3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = audio.mp3; name = 9.mp3; path = Resources/audio/9.mp3; sourceTree = SOURCE_ROOT; };
 		0E98884767A745E0A21D1F38 /* CCTween.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCTween.h; path = "cocos2d/cocos/editor-support/cocostudio/CCTween.h"; sourceTree = SOURCE_ROOT; };
 		0EBC015097264B338DFDB473 /* GUIExport.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = GUIExport.h; path = cocos2d/cocos/ui/GUIExport.h; sourceTree = SOURCE_ROOT; };
 		0EE26C4248A040C9AC70F2A2 /* CCActionEase.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCActionEase.cpp; path = cocos2d/cocos/2d/CCActionEase.cpp; sourceTree = SOURCE_ROOT; };
@@ -1246,7 +1245,7 @@
 		2318BAE71CF94C74B4B8A561 /* CCActionNode.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCActionNode.cpp; path = "cocos2d/cocos/editor-support/cocostudio/CCActionNode.cpp"; sourceTree = SOURCE_ROOT; };
 		23B04A79079F4172B88A352C /* CCDisplayFactory.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCDisplayFactory.h; path = "cocos2d/cocos/editor-support/cocostudio/CCDisplayFactory.h"; sourceTree = SOURCE_ROOT; };
 		2445C73105BB4B7E97A25EE7 /* CCSprite3D.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCSprite3D.cpp; path = cocos2d/cocos/3d/CCSprite3D.cpp; sourceTree = SOURCE_ROOT; };
-		2489195C803D4AB78EDF6724 /* 5.mp3 */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = 5.mp3; path = Resources/audio/5.mp3; sourceTree = SOURCE_ROOT; };
+		2489195C803D4AB78EDF6724 /* 5.mp3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = audio.mp3; name = 5.mp3; path = Resources/audio/5.mp3; sourceTree = SOURCE_ROOT; };
 		24A5C138055A4A1F9B9CB95C /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
 		24E8CEDB7BBD45BCA9982B7E /* CCActionPageTurn3D.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCActionPageTurn3D.h; path = cocos2d/cocos/2d/CCActionPageTurn3D.h; sourceTree = SOURCE_ROOT; };
 		255945FC8C8A4FA18DC51C6D /* CCPUInterParticleColliderTranslator.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCPUInterParticleColliderTranslator.cpp; path = cocos2d/extensions/Particle3D/PU/CCPUInterParticleColliderTranslator.cpp; sourceTree = SOURCE_ROOT; };
@@ -1301,9 +1300,9 @@
 		2F10B10BE043496BA87FFE80 /* CCPUVelocityMatchingAffectorTranslator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCPUVelocityMatchingAffectorTranslator.h; path = cocos2d/extensions/Particle3D/PU/CCPUVelocityMatchingAffectorTranslator.h; sourceTree = SOURCE_ROOT; };
 		2F4AD25E4B5B4E6A9593A580 /* CCPUParticleSystem3DTranslator.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCPUParticleSystem3DTranslator.cpp; path = cocos2d/extensions/Particle3D/PU/CCPUParticleSystem3DTranslator.cpp; sourceTree = SOURCE_ROOT; };
 		2F4F430D87584C16BDDB351B /* CCArmatureAnimation.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCArmatureAnimation.h; path = "cocos2d/cocos/editor-support/cocostudio/CCArmatureAnimation.h"; sourceTree = SOURCE_ROOT; };
-		2F6827712B4242FC8D622CD6 /* 4.mp3 */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = 4.mp3; path = Resources/audio/4.mp3; sourceTree = SOURCE_ROOT; };
+		2F6827712B4242FC8D622CD6 /* 4.mp3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = audio.mp3; name = 4.mp3; path = Resources/audio/4.mp3; sourceTree = SOURCE_ROOT; };
 		2F75D2578D32463C85760D53 /* WebSocket.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = WebSocket.cpp; path = cocos2d/cocos/network/WebSocket.cpp; sourceTree = SOURCE_ROOT; };
-		2FA0D37A2558481892F34C91 /* 11.mp3 */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = 11.mp3; path = Resources/audio/11.mp3; sourceTree = SOURCE_ROOT; };
+		2FA0D37A2558481892F34C91 /* 11.mp3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = audio.mp3; name = 11.mp3; path = Resources/audio/11.mp3; sourceTree = SOURCE_ROOT; };
 		2FC4D8C7307844D7A25C8F9A /* SocketIO.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SocketIO.h; path = cocos2d/cocos/network/SocketIO.h; sourceTree = SOURCE_ROOT; };
 		30135964C2AB4B73812EDF3E /* CCEventListenerTouch.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCEventListenerTouch.h; path = cocos2d/cocos/base/CCEventListenerTouch.h; sourceTree = SOURCE_ROOT; };
 		3035166270C6413D9F0DE520 /* CCPUTechniqueTranslator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCPUTechniqueTranslator.h; path = cocos2d/extensions/Particle3D/PU/CCPUTechniqueTranslator.h; sourceTree = SOURCE_ROOT; };
@@ -1408,8 +1407,8 @@
 		4370A34EEE794244BEEA0D67 /* CCEventCustom.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCEventCustom.h; path = cocos2d/cocos/base/CCEventCustom.h; sourceTree = SOURCE_ROOT; };
 		43832E0DB2C24FFFAE292662 /* CCPUSineForceAffector.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCPUSineForceAffector.h; path = cocos2d/extensions/Particle3D/PU/CCPUSineForceAffector.h; sourceTree = SOURCE_ROOT; };
 		43892832D86A4CEC970AA5CE /* CCPUInterParticleCollider.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCPUInterParticleCollider.cpp; path = cocos2d/extensions/Particle3D/PU/CCPUInterParticleCollider.cpp; sourceTree = SOURCE_ROOT; };
-		43DEDF833A6249409FD32F5A /* 7.mp3 */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = 7.mp3; path = Resources/audio/7.mp3; sourceTree = SOURCE_ROOT; };
-		4406194AF9764D9FBF0E9780 /* 3.mp3 */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = 3.mp3; path = Resources/audio/3.mp3; sourceTree = SOURCE_ROOT; };
+		43DEDF833A6249409FD32F5A /* 7.mp3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = audio.mp3; name = 7.mp3; path = Resources/audio/7.mp3; sourceTree = SOURCE_ROOT; };
+		4406194AF9764D9FBF0E9780 /* 3.mp3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = audio.mp3; name = 3.mp3; path = Resources/audio/3.mp3; sourceTree = SOURCE_ROOT; };
 		441544CABE6340A6B7C43504 /* UITextBMFont.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = UITextBMFont.cpp; path = cocos2d/cocos/ui/UITextBMFont.cpp; sourceTree = SOURCE_ROOT; };
 		445181FFDEDD44B990B77111 /* firePngData.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = firePngData.h; path = cocos2d/cocos/base/firePngData.h; sourceTree = SOURCE_ROOT; };
 		4461BFD606774213BD205AB3 /* CCFontAtlas.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCFontAtlas.h; path = cocos2d/cocos/2d/CCFontAtlas.h; sourceTree = SOURCE_ROOT; };
@@ -1660,7 +1659,7 @@
 		76592ADD4F384152ACE47F05 /* CCUserDefault-apple.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = "CCUserDefault-apple.mm"; path = "cocos2d/cocos/base/CCUserDefault-apple.mm"; sourceTree = SOURCE_ROOT; };
 		76C60C26B6E84B15BA7C466F /* CCLabelTextFormatter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCLabelTextFormatter.cpp; path = cocos2d/cocos/2d/CCLabelTextFormatter.cpp; sourceTree = SOURCE_ROOT; };
 		76CDCC22FDDD49FFBF16DD5C /* CCSkinNode.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCSkinNode.h; path = "cocos2d/cocos/editor-support/cocostudio/ActionTimeline/CCSkinNode.h"; sourceTree = SOURCE_ROOT; };
-		77310D625D1E47D0A6F25BD6 /* loop.mp3 */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = loop.mp3; path = Resources/audio/loop.mp3; sourceTree = SOURCE_ROOT; };
+		77310D625D1E47D0A6F25BD6 /* loop.mp3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = audio.mp3; name = loop.mp3; path = Resources/audio/loop.mp3; sourceTree = SOURCE_ROOT; };
 		77483B2419F1400B8162698E /* cpCompat62.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = cpCompat62.h; path = cocos2d/cocos/physics/cpCompat62.h; sourceTree = SOURCE_ROOT; };
 		775C3E5C85B349BE9006F0E0 /* CCPhysicsWorld.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCPhysicsWorld.cpp; path = cocos2d/cocos/physics/CCPhysicsWorld.cpp; sourceTree = SOURCE_ROOT; };
 		7767990CD08F49A78CF5658D /* CCFileUtils-apple.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = "CCFileUtils-apple.mm"; path = "cocos2d/cocos/platform/apple/CCFileUtils-apple.mm"; sourceTree = SOURCE_ROOT; };
@@ -1782,11 +1781,10 @@
 		8C9DB721E965429790182AD5 /* CCTechnique.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCTechnique.cpp; path = cocos2d/cocos/renderer/CCTechnique.cpp; sourceTree = SOURCE_ROOT; };
 		8CBF332587FB4FD5AACB7C32 /* CCSpriteFrame.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCSpriteFrame.h; path = cocos2d/cocos/2d/CCSpriteFrame.h; sourceTree = SOURCE_ROOT; };
 		8CDBD387A848438791742BB2 /* Sprite3DReader.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Sprite3DReader.cpp; path = "cocos2d/cocos/editor-support/cocostudio/WidgetReader/Sprite3DReader/Sprite3DReader.cpp"; sourceTree = SOURCE_ROOT; };
-		8CEBDDCA25F03C4500E89012 /* UnityAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UnityAds.framework; sourceTree = "<group>"; };
-		8CEBDDDB25F03CB400E89012 /* UnityChan_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UnityChan_logo.png; sourceTree = "<group>"; };
 		8CEBDDEC25F03D0A00E89012 /* UnityAdsNativeAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnityAdsNativeAPI.h; path = Classes/UnityAdsNativeAPI.h; sourceTree = "<group>"; };
 		8CEBDDFC25F03D3100E89012 /* UnityAdsBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnityAdsBridge.h; path = proj.ios_mac/ios/UnityAdsBridge.h; sourceTree = "<group>"; };
 		8CEBDDFD25F03D3100E89012 /* UnityAdsBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = UnityAdsBridge.mm; path = proj.ios_mac/ios/UnityAdsBridge.mm; sourceTree = "<group>"; };
+		8CEBDE1D25F0509C00E89012 /* UnityAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UnityAds.framework; path = proj.ios_mac/ios/UnityAds.framework; sourceTree = "<group>"; };
 		8CFD5EB425EF1979008EB67A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8CFD5EB625EF197F008EB67A /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		8D7553F9F00D41799A7DCB1A /* CCDownloader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCDownloader.h; path = cocos2d/cocos/network/CCDownloader.h; sourceTree = SOURCE_ROOT; };
@@ -1961,7 +1959,7 @@
 		ADD8E3BD66A74EF0894CC821 /* CCControl.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCControl.h; path = cocos2d/extensions/GUI/CCControlExtension/CCControl.h; sourceTree = SOURCE_ROOT; };
 		ADF1D43F3EB64B53B023B2FB /* libext_convertUTF.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libext_convertUTF.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADF577B891FB4A748CE0E7E8 /* CCParticleBatchNode.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCParticleBatchNode.cpp; path = cocos2d/cocos/2d/CCParticleBatchNode.cpp; sourceTree = SOURCE_ROOT; };
-		AE39065EB8984C7A969C06D9 /* 2.mp3 */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = 2.mp3; path = Resources/audio/2.mp3; sourceTree = SOURCE_ROOT; };
+		AE39065EB8984C7A969C06D9 /* 2.mp3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = audio.mp3; name = 2.mp3; path = Resources/audio/2.mp3; sourceTree = SOURCE_ROOT; };
 		AE76495D257B4C0883D57B60 /* ParticleReader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ParticleReader.h; path = "cocos2d/cocos/editor-support/cocostudio/WidgetReader/ParticleReader/ParticleReader.h"; sourceTree = SOURCE_ROOT; };
 		AEBA34A425BD4A2D9E5BE590 /* UIImageView.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = UIImageView.cpp; path = cocos2d/cocos/ui/UIImageView.cpp; sourceTree = SOURCE_ROOT; };
 		AEFA0CC2551E4343B2DA9680 /* Marker Felt.ttf */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = "Marker Felt.ttf"; path = "Resources/fonts/Marker Felt.ttf"; sourceTree = SOURCE_ROOT; };
@@ -1977,7 +1975,7 @@
 		B0E2B3CEB31E42EE896A1985 /* etc1.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = etc1.cpp; path = cocos2d/cocos/base/etc1.cpp; sourceTree = SOURCE_ROOT; };
 		B123DF0273644104AA63413B /* ProgramState.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ProgramState.h; path = cocos2d/cocos/renderer/backend/ProgramState.h; sourceTree = SOURCE_ROOT; };
 		B1278A0404014501859E9C2A /* Info.plist */ = {isa = PBXFileReference; explicitFileType = sourcecode.text.plist; fileEncoding = 4; lastKnownFileType = text.plist; name = Info.plist; path = "ios-sim/engine/external/xxhash/CMakeFiles/ext_xxhash.dir/Info.plist"; sourceTree = SOURCE_ROOT; };
-		B12C759ACC5F414CB53C6983 /* 8.mp3 */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = 8.mp3; path = Resources/audio/8.mp3; sourceTree = SOURCE_ROOT; };
+		B12C759ACC5F414CB53C6983 /* 8.mp3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = audio.mp3; name = 8.mp3; path = Resources/audio/8.mp3; sourceTree = SOURCE_ROOT; };
 		B131540E3BCB4E95882A7FF3 /* CCPUEventHandlerTranslator.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCPUEventHandlerTranslator.cpp; path = cocos2d/extensions/Particle3D/PU/CCPUEventHandlerTranslator.cpp; sourceTree = SOURCE_ROOT; };
 		B16498B76D9C4077A34DC3A7 /* CCSpriteBatchNode.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCSpriteBatchNode.h; path = cocos2d/cocos/2d/CCSpriteBatchNode.h; sourceTree = SOURCE_ROOT; };
 		B16A7B655D394F80ACC48F16 /* CCSkeletonNode.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCSkeletonNode.cpp; path = "cocos2d/cocos/editor-support/cocostudio/ActionTimeline/CCSkeletonNode.cpp"; sourceTree = SOURCE_ROOT; };
@@ -2050,7 +2048,7 @@
 		BFC925EEEFDE4380BFB5DE89 /* CommandBuffer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CommandBuffer.cpp; path = cocos2d/cocos/renderer/backend/CommandBuffer.cpp; sourceTree = SOURCE_ROOT; };
 		BFCF4AE4B4954062A5185D75 /* ccConstants.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ccConstants.h; path = cocos2d/cocos/base/ccConstants.h; sourceTree = SOURCE_ROOT; };
 		BFF573EA6B4A4F2582C39A41 /* CCUIEditBoxIOS.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCUIEditBoxIOS.h; path = cocos2d/cocos/ui/UIEditBox/iOS/CCUIEditBoxIOS.h; sourceTree = SOURCE_ROOT; };
-		C0199CD50EEC42A6A98ACF40 /* 12.mp3 */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = 12.mp3; path = Resources/audio/12.mp3; sourceTree = SOURCE_ROOT; };
+		C0199CD50EEC42A6A98ACF40 /* 12.mp3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = audio.mp3; name = 12.mp3; path = Resources/audio/12.mp3; sourceTree = SOURCE_ROOT; };
 		C09D3F7A6DB240B8B579AF5E /* CCPUTranslateManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCPUTranslateManager.h; path = cocos2d/extensions/Particle3D/PU/CCPUTranslateManager.h; sourceTree = SOURCE_ROOT; };
 		C0EBAEB7FF714A849B56B31A /* CCPUGravityAffector.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCPUGravityAffector.cpp; path = cocos2d/extensions/Particle3D/PU/CCPUGravityAffector.cpp; sourceTree = SOURCE_ROOT; };
 		C1542DA86C5345E18AED320F /* SpriteReader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SpriteReader.h; path = "cocos2d/cocos/editor-support/cocostudio/WidgetReader/SpriteReader/SpriteReader.h"; sourceTree = SOURCE_ROOT; };
@@ -2079,7 +2077,7 @@
 		C5DC40E0071C4024832B0CD7 /* CCPUFlockCenteringAffector.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCPUFlockCenteringAffector.cpp; path = cocos2d/extensions/Particle3D/PU/CCPUFlockCenteringAffector.cpp; sourceTree = SOURCE_ROOT; };
 		C5F3CF19CF3541DE8BE7B928 /* CCAffineTransform.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCAffineTransform.h; path = cocos2d/cocos/math/CCAffineTransform.h; sourceTree = SOURCE_ROOT; };
 		C615D298D4B44E75B36630F7 /* CCGrid.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCGrid.h; path = cocos2d/cocos/2d/CCGrid.h; sourceTree = SOURCE_ROOT; };
-		C621FDD2F3C1408D9820285D /* 10.mp3 */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = 10.mp3; path = Resources/audio/10.mp3; sourceTree = SOURCE_ROOT; };
+		C621FDD2F3C1408D9820285D /* 10.mp3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = audio.mp3; name = 10.mp3; path = Resources/audio/10.mp3; sourceTree = SOURCE_ROOT; };
 		C6F02EECA9984D9099E560B7 /* TriggerMng.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TriggerMng.h; path = "cocos2d/cocos/editor-support/cocostudio/TriggerMng.h"; sourceTree = SOURCE_ROOT; };
 		C7189FD1CEC7462BA728E046 /* CCPUScaleAffector.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCPUScaleAffector.cpp; path = cocos2d/extensions/Particle3D/PU/CCPUScaleAffector.cpp; sourceTree = SOURCE_ROOT; };
 		C72ED798940845B397B83263 /* NodeReader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = NodeReader.h; path = "cocos2d/cocos/editor-support/cocostudio/WidgetReader/NodeReader/NodeReader.h"; sourceTree = SOURCE_ROOT; };
@@ -2180,7 +2178,7 @@
 		DCE0DB736D964272A3237B31 /* CCProgressTimer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCProgressTimer.h; path = cocos2d/cocos/2d/CCProgressTimer.h; sourceTree = SOURCE_ROOT; };
 		DD27BBCB8A3748788E2CA393 /* CCPUAlignAffectorTranslator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CCPUAlignAffectorTranslator.h; path = cocos2d/extensions/Particle3D/PU/CCPUAlignAffectorTranslator.h; sourceTree = SOURCE_ROOT; };
 		DD92D4EC8A7D4DC8989CAD00 /* cdt.cc */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = cdt.cc; path = cocos2d/external/poly2tri/sweep/cdt.cc; sourceTree = SOURCE_ROOT; };
-		DDC40E68A03240BE94439467 /* 1.mp3 */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = 1.mp3; path = Resources/audio/1.mp3; sourceTree = SOURCE_ROOT; };
+		DDC40E68A03240BE94439467 /* 1.mp3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = audio.mp3; name = 1.mp3; path = Resources/audio/1.mp3; sourceTree = SOURCE_ROOT; };
 		DE0DA8A73BBA46AB8ED6BDBC /* CCDevice-apple.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = "CCDevice-apple.mm"; path = "cocos2d/cocos/platform/apple/CCDevice-apple.mm"; sourceTree = SOURCE_ROOT; };
 		DE6A62A4808F4F09BE56D5F6 /* CCAnimationCache.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCAnimationCache.cpp; path = cocos2d/cocos/2d/CCAnimationCache.cpp; sourceTree = SOURCE_ROOT; };
 		DE953C0938CB4EA2959E2FE2 /* CCVertexAttribBinding.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CCVertexAttribBinding.cpp; path = cocos2d/cocos/3d/CCVertexAttribBinding.cpp; sourceTree = SOURCE_ROOT; };
@@ -2414,9 +2412,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CEBDE1E25F0509C00E89012 /* UnityAds.framework in Frameworks */,
 				8CFD5EB725EF197F008EB67A /* AdSupport.framework in Frameworks */,
 				8CFD5EB525EF1979008EB67A /* Security.framework in Frameworks */,
-				8CEBDDCB25F03C4500E89012 /* UnityAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2771,7 +2769,6 @@
 		2EF7064858564755B063B37F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				8CEBDDEC25F03D0A00E89012 /* UnityAdsNativeAPI.h */,
 				37539C119C734C2797B0C0FE /* AppDelegate.cpp */,
 				E98AA500AB394DBAA558C5D0 /* AppDelegate.h */,
 				063ED8AF5D19437FB8032D06 /* Arena.cpp */,
@@ -2790,6 +2787,7 @@
 				65E0AB5CA0DC4820A3ADE24B /* PowerUp.h */,
 				0A30E4940F694BC9837D2C3D /* SplashScene.cpp */,
 				5E1A0FF4A0BA4CFA949939EE /* SplashScene.h */,
+				8CEBDDEC25F03D0A00E89012 /* UnityAdsNativeAPI.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -3431,7 +3429,7 @@
 		6927DDBB2A2845CA99EB492A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8CEBDDCA25F03C4500E89012 /* UnityAds.framework */,
+				8CEBDE1D25F0509C00E89012 /* UnityAds.framework */,
 				8CFD5EB425EF1979008EB67A /* Security.framework */,
 				8CFD5EB625EF197F008EB67A /* AdSupport.framework */,
 			);
@@ -3569,7 +3567,6 @@
 		7C96BE9B2BE04A6BB930B46E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8CEBDDDB25F03CB400E89012 /* UnityChan_logo.png */,
 				23A6977D1F2E4A2BAD02E776 /* audio */,
 				A7183F5D530F4F0597320EAB /* fonts */,
 				B49A487FA8AC4281B1E51917 /* res */,
@@ -4900,7 +4897,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CEBDDDC25F03CB400E89012 /* UnityChan_logo.png in Resources */,
 				04EE39E4824B4EC985D4F168 /* Images.xcassets in Resources */,
 				01C8FBC04E864EF29751128F /* LaunchScreen.storyboard in Resources */,
 				0AFAB2E75069479DB3AC8919 /* LaunchScreenBackground.png in Resources */,
@@ -6122,6 +6118,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/proj.ios_mac",
+					"$(PROJECT_DIR)/proj.ios_mac/ios",
 				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -6582,6 +6579,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/proj.ios_mac",
+					"$(PROJECT_DIR)/proj.ios_mac/ios",
 				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -7358,6 +7356,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/proj.ios_mac",
+					"$(PROJECT_DIR)/proj.ios_mac/ios",
 				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -8115,6 +8114,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/proj.ios_mac",
+					"$(PROJECT_DIR)/proj.ios_mac/ios",
 				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;

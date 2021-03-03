@@ -19,6 +19,7 @@ void Paddle::powerUpGrow()
         addPhysicsBody();
     }), nullptr);
     runAction(seq);
+    AudioEngine::play2d("4.mp3", true, 0.7f);
     scheduleOnce([&](float dt) {
         powerUpEnd();
     }, 10, "powerupend");
@@ -34,6 +35,7 @@ void Paddle::powerUpShrink()
         addPhysicsBody();
     }), nullptr);
     runAction(seq);
+    AudioEngine::play2d("4.mp3", true, 0.7f);
     scheduleOnce([&](float dt) {
         powerUpEnd();
     }, 8, "powerupend");
