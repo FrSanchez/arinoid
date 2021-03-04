@@ -23,7 +23,9 @@ private:
     Arena();
     void makeBackground(int tile);
     cocos2d::Sprite* drawTile(std::string frameName, int, int);
-    cocos2d::Action* createAnimation();
+
+    constexpr static const float dirX[] = {128, 128, -128, -128,  64,  -64,  64,  -64, 0, 0, 64, -64};
+    constexpr static const float dirY[] = { 64,  -64,  64,  -64, 128, 128, -128, -128, 64, -64, 0, 0};
     
 public:
     static Arena* create(int tileNum);
@@ -31,6 +33,7 @@ public:
     ~Arena();
     void setTile(int tileNum);
     cocos2d::Rect getArenaRect() { return _arenaRect; }
+    void animateBackground();
     
     constexpr static const char * const borderNames[8] = { "leftBorder", "rightBorder",
         "leftSpecialBorder", "rightSpecialBorder",

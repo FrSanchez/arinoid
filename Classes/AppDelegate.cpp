@@ -65,13 +65,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
-    
-    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("spritesheet.plist");
-    SpriteFrame *frame = SpriteFrameCache::getInstance()->getSpriteFrameByName("tile");
-    float tileSize = frame->getOriginalSize().width;
-    
-    float width = tileSize * 13;
-    float height = tileSize * 16;
+        
+    float width = 832;
+    float height = 1110;
     
     if(!glview)
     {
@@ -85,7 +81,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     }
 
     // turn on display FPS
-//    director->setDisplayStats(true);
+    director->setDisplayStats(true);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);

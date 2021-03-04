@@ -71,7 +71,7 @@ static AppDelegate s_sharedApplication;
 
     [window makeKeyAndVisible];
 
-    [[UIApplication sharedApplication] setStatusBarHidden:true];
+//    [[UIApplication sharedApplication] setStatusBarHidden:true];
     
     //Launching the app with the arguments -NSAllowsDefaultLineBreakStrategy NO to force back to the old behavior.
     if ( [[UIDevice currentDevice].systemVersion floatValue] >= 13.0f)

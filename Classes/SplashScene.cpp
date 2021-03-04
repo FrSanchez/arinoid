@@ -42,15 +42,6 @@ bool SplashScene::init()
 
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("spritesheet.plist");
     
-    titleLabel = Label::createWithTTF("Bricked", "fonts/Marker Felt.ttf", 24);
-    
-    // position the label on the center of the screen
-    titleLabel->setPosition(Vec2(size.width/2,
-                            size.height - titleLabel->getContentSize().height));
-
-    // add the label as a child to this layer
-    this->addChild(titleLabel, 1);
-
     auto icon = Sprite::createWithSpriteFrameName("arinoid640");
     icon->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     icon->setTag(2);
@@ -201,6 +192,7 @@ void SplashScene::initUnityAdsFunc()
 #endif
     
     UnityAdsInit(gameId, true);
+    log("[UnityAds cpp] version %s", UnityAdsGetVersion().c_str());
 }
 
 void SplashScene::showUnityAdsFunc(Ref* pSender)
@@ -208,7 +200,8 @@ void SplashScene::showUnityAdsFunc(Ref* pSender)
     const char* zoneString = "Interstitial_iOS";
     
     if(UnityAdsIsReady(zoneString)) {
-        UnityAdsShow(zoneString);
+//        UnityAdsShow(zoneString);
+        rewardPlayer(zoneString);
     } else {
         CCLOG("[UnityAds cpp test] yet cannot show");
     }

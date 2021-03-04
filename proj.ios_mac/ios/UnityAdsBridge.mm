@@ -33,7 +33,7 @@
 }
 
 - (void)unityAdsDidStart:(NSString *)placementId{
-    
+    NSLog(@"[UnityAds delegate] unityAdsDidStart with placementId=%@", placementId);
 }
 
 - (void)unityAdsDidFinish:(NSString *)placementId
@@ -61,7 +61,8 @@ void UnityAdsInit (const char *gameIdParameter, bool testMode) {
     
     UnityAdsBridge* bridge = [UnityAdsBridge new];
     NSString* gameId = [NSString stringWithFormat:@"%s", gameIdParameter];
-    [UnityAds initialize:gameId delegate:bridge testMode:testMode];
+    [UnityAds initialize:gameId testMode:testMode];
+    [UnityAds addDelegate:bridge];
 }
 
 bool UnityAdsIsReady (const char *parameter){

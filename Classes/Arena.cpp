@@ -36,7 +36,7 @@ Arena* Arena::create(int tileNum)
 void Arena::setTile(int tileNum)
 {
 //    tileNum %= MAX_NUM_TILES;
-    auto color = Color3B(random(0, 255), random(0, 255), random(0, 255));
+    auto color = Color3B(random(0x40, 0xff), random(0x40, 0xff), random(0x40, 0xff));
     auto children = getChildByTag(0x88)->getChildren();
     auto tintTo = TintTo::create(tileNum, random(0, 255), random(0, 255), random(0, 255));
     for (auto iter : children){
@@ -46,6 +46,7 @@ void Arena::setTile(int tileNum)
         }
     }
     scheduleOnce([&](float dt){ setTile(10);}, 10, "recolor");
+    animateBackground();
 
 }
 
@@ -64,25 +65,26 @@ Arena::~Arena()
 {
 }
 
+void Arena::animateBackground()
+{
+    auto root = getChildByTag(0x88);
+    int dir = random(0, 11);
+    auto pos = root->getPosition();
+    CCLOG("AnimateBackground %d MoveBy: (%.0f %.0f) MoveBack: (%.0f %.0f)", dir, dirX[dir], dirY[dir], -dirX[dir], -dirY[dir]);
+    auto seq = Sequence::create(MoveBy::create(2.5, Vec2(dirX[dir], dirY[dir])), MoveTo::create(0, Vec2::ZERO), nullptr);
+    root->runAction(Repeat::create(seq, 4));
+}
+
 void Arena::makeBackground(int tilenum)
 {
-//    for (int x = 0; x < 14; x++) {
-//        auto border = drawTile(borderNames[bordertop[x]], x, numYTiles);
-//    }
-//    for (int y = 0; y < 14; y++) {
-//        auto border = drawTile(borderNames[borderleft[y]], 0, y);
-//        border = drawTile(borderNames[borderright[y]], numXTiles + 1, y);
-//    }
+
     Node* root = Node::create();
     root->setTag(0x88);
     addChild(root);
-    auto seq = Sequence::create(MoveBy::create(3, Vec2(-128, 64)), MoveBy::create(0, Vec2(128, -64)), nullptr);
-    root->runAction(RepeatForever::create(seq));
 
-    auto anim = createAnimation();
-    for(int x = -2; x < numXTiles + 4; x++) {
-        for (int y = -2; y < numYTiles + 8; y++) {
-            auto tile = drawTile("tile", x + 1, y );
+    for(int x = -3; x < numXTiles + 4; x++) {
+        for (int y = -4; y < numYTiles + 5; y++) {
+            auto tile = drawTile("tile", x , y );
             tile->setTag(0x11);
             root->addChild(tile);
         }
@@ -102,11 +104,6 @@ void Arena::makeBackground(int tilenum)
     addComponent(pb);
     
     _arenaRect = Rect(0, 0, numXTiles * tileSize, numYTiles * tileSize);
-}
-
-Action* Arena::createAnimation()
-{
-   
 }
 
 Sprite* Arena::drawTile(std::string frameName, int x, int y)

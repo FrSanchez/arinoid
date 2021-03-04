@@ -199,7 +199,7 @@ void GameScene::initRound()
 
     removeBalls();
     
-    _paddle->setPosition(Vec2(size.width / 2, 64));
+    _paddle->setPosition(Vec2(size.width / 2, 32));
 
     if (_lives <= 0) {
         auto gameOver = Label::createWithBMFont(GAME_FONT, "GAME OVER!");
@@ -335,10 +335,10 @@ bool GameScene::onContactBegin(PhysicsContact& contact)
     ExtraPower* power = static_cast<ExtraPower*>( getContact(a, b, POWERUP_TAG));
     Paddle* paddle = static_cast<Paddle*>( getContact(a, b, PADDLE_TAG));
     
-    log("contact %s %s", itoa(a->getCategoryBitmask(), 2).c_str(), itoa(b->getCategoryBitmask(), 2).c_str());
+//    log("contact %s %s", itoa(a->getCategoryBitmask(), 2).c_str(), itoa(b->getCategoryBitmask(), 2).c_str());
     
     if (ball) {
-        log("%f %f", ball->getPhysicsBody()->getMoment(), ball->getPhysicsBody()->getVelocity().length());
+//        log("%f %f", ball->getPhysicsBody()->getMoment(), ball->getPhysicsBody()->getVelocity().length());
         if (arena) {
             
             if (ball->getPosition().y < _paddle->getPosition().y - _paddle->getContentSize().height

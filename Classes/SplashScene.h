@@ -18,7 +18,7 @@
 class SplashScene : public cocos2d::Scene
 {
 private:
-    cocos2d::Label* titleLabel;
+    cocos2d::Label* titleLabel = nullptr;
     void doProgress(float dt);
     cocos2d::Node* createSpinnyNode(cocos2d::Vec2 pos, cocos2d::Color4F color);
 public:

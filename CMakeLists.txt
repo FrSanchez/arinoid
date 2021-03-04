@@ -25,7 +25,7 @@
 
 cmake_minimum_required(VERSION 3.6)
 
-set(APP_NAME Arinoid)
+set(APP_NAME Bricked)
 
 project(${APP_NAME})
 
@@ -35,7 +35,7 @@ if(XCODE)
     endif()
 endif()
 
-if(NOT DEFINED BUILD_ENGINE_DONE) # to test arinoid into root project
+if(NOT DEFINED BUILD_ENGINE_DONE) # to test bricked into root project
     set(COCOS2DX_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cocos2d)
     set(CMAKE_MODULE_PATH ${COCOS2DX_ROOT_PATH}/cmake/Modules/)
 
@@ -54,28 +54,29 @@ if(APPLE OR WINDOWS)
     cocos_mark_multi_resources(common_res_files RES_TO "Resources" FOLDERS ${GAME_RES_FOLDER})
 endif()
 
-# add cross-platforms source files and header files 
+# add cross-platforms source files and header files
 list(APPEND GAME_SOURCE
-     Classes/AppDelegate.cpp	
-     Classes/Ball.cpp	
-     Classes/GameScene.cpp	
+     Classes/AppDelegate.cpp
+     Classes/Ball.cpp
+     Classes/GameScene.cpp
      Classes/PowerUp.cpp
-     Classes/Arena.cpp	
-     Classes/Brick.cpp	
-     Classes/Paddle.cpp	
+     Classes/Arena.cpp
+     Classes/Brick.cpp
+     Classes/Paddle.cpp
      Classes/SplashScene.cpp
      Classes/ExtraPower.cpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
-     Classes/Ball.h		
-     Classes/GameScene.h	
-     Classes/PowerUp.h 
-     Classes/Arena.h		
-     Classes/Brick.h		
-     Classes/Paddle.h	
+     Classes/Ball.h
+     Classes/GameScene.h
+     Classes/PowerUp.h
+     Classes/Arena.h
+     Classes/Brick.h
+     Classes/Paddle.h
      Classes/SplashScene.h
      Classes/ExtraPower.h
+     Classes/UnityAdsNativeAPI.h
      )
 
 if(ANDROID)
@@ -103,6 +104,7 @@ elseif(APPLE)
         list(APPEND GAME_HEADER
              proj.ios_mac/ios/AppController.h
              proj.ios_mac/ios/RootViewController.h
+             proj.ios_mac/ios/UnityAdsBridge.h
              )
         set(APP_UI_RES
             proj.ios_mac/ios/LaunchScreen.storyboard
@@ -113,6 +115,7 @@ elseif(APPLE)
              proj.ios_mac/ios/main.m
              proj.ios_mac/ios/AppController.mm
              proj.ios_mac/ios/RootViewController.mm
+             proj.ios_mac/ios/UnityAdsBridge.mm
              proj.ios_mac/ios/Prefix.pch
              ${APP_UI_RES}
              )
@@ -137,6 +140,9 @@ set(all_code_files
     )
 if(NOT ANDROID)
     add_executable(${APP_NAME} ${all_code_files})
+    target_link_libraries(program "-framework Security")
+    target_link_libraries(program "-framework AdSupport")
+    target_link_libraries(program "-framework UnityAds")
 else()
     add_library(${APP_NAME} SHARED ${all_code_files})
     add_subdirectory(${COCOS2DX_ROOT_PATH}/cocos/platform/android ${ENGINE_BINARY_PATH}/cocos/platform)
