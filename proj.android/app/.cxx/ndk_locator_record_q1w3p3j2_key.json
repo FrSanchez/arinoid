@@ -1,0 +1,17 @@
+{
+  "ndkDirProperty": "/home/francisco.sanchez/Android/Sdk/ndk",
+  "sdkFolder": "/home/francisco.sanchez/Android/Sdk",
+  "sideBySideNdkFolderNames": [
+    "toolchains",
+    "shader-tools",
+    "meta",
+    "simpleperf",
+    "platforms",
+    "wrap.sh",
+    "build",
+    "sources",
+    "sysroot",
+    "python-packages",
+    "prebuilt"
+  ]
+}

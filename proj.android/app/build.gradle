@@ -4,6 +4,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion PROP_COMPILE_SDK_VERSION.toInteger()
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.sanchezparralabs.arinoid"
