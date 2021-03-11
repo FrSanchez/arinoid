@@ -5,3 +5,4 @@ lib/
 Bricked.build/
 .DS_Store
 xcuserdata/
+.cxx/
